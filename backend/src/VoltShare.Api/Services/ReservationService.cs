@@ -385,10 +385,13 @@ public class ReservationService : IReservationService
 
         var reservations = await _reservations.SearchAsync(query, cancellationToken);
 
-        // The station names are resolved in one query rather than one per row.
+        // The display names are resolved with one query each rather than one
+        // query per row, which would otherwise make a long booking list very
+        // slow to build.
         var stationNames = await LoadStationNamesAsync(reservations, cancellationToken);
+        var prosumerNames = await LoadProsumerNamesAsync(reservations, cancellationToken);
 
-        return reservations.ToResponseList(stationNames: stationNames);
+        return reservations.ToResponseList(prosumerNames, stationNames);
     }
 
     /// <summary>
@@ -641,6 +644,41 @@ public class ReservationService : IReservationService
         foreach (var station in stations.Where(s => stationIds.Contains(s.Id)))
         {
             names[station.Id] = station.Name;
+        }
+
+        return names;
+    }
+
+    /// <summary>
+    /// Loads the names of every prosumer referenced by a list of bookings in a
+    /// single query, so the booking list can show who each booking belongs to
+    /// without issuing one lookup per row.
+    /// </summary>
+    private async Task<IReadOnlyDictionary<string, string>> LoadProsumerNamesAsync(
+        IReadOnlyList<EnergyReservation> reservations, CancellationToken cancellationToken)
+    {
+        var names = new Dictionary<string, string>();
+
+        var nics = reservations
+            .Select(r => r.ProsumerNic)
+            .Where(nic => !string.IsNullOrWhiteSpace(nic))
+            .Distinct()
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+        if (nics.Count == 0)
+        {
+            return names;
+        }
+
+        // One query for every prosumer, then filtered in memory. The prosumer
+        // list in this system is small enough that this is cheaper than a
+        // separate lookup for each distinct NIC on the page.
+        var prosumers = await _users.ListAsync(
+            role: UserRoles.Prosumer, cancellationToken: cancellationToken);
+
+        foreach (var prosumer in prosumers.Where(p => nics.Contains(p.Id)))
+        {
+            names[prosumer.Id] = prosumer.FullName;
         }
 
         return names;

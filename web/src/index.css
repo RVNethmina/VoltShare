@@ -1,0 +1,140 @@
+/* -----------------------------------------------------------------------------
+   File        : index.css
+   Project     : VoltShare Web - Smart Solar Microgrid Trading System
+   Description : Global styling. Loads Tailwind CSS 4 and defines the shared
+                 design tokens and the handful of component classes that are
+                 reused across every screen.
+   Author      : <IT Number - Member Name>
+   Created     : 2026-09-03
+   ----------------------------------------------------------------------------- */
+
+@import "tailwindcss";
+
+/* Design tokens. Amber stands for solar generation and emerald for energy
+   delivered, which keeps the colour language consistent across the app. */
+@theme {
+  --color-brand-50: #fffbeb;
+  --color-brand-100: #fef3c7;
+  --color-brand-200: #fde68a;
+  --color-brand-400: #fbbf24;
+  --color-brand-500: #f59e0b;
+  --color-brand-600: #d97706;
+  --color-brand-700: #b45309;
+
+  --color-ink-50: #f8fafc;
+  --color-ink-100: #f1f5f9;
+  --color-ink-200: #e2e8f0;
+  --color-ink-300: #cbd5e1;
+  --color-ink-400: #94a3b8;
+  --color-ink-500: #64748b;
+  --color-ink-600: #475569;
+  --color-ink-700: #334155;
+  --color-ink-800: #1e293b;
+  --color-ink-900: #0f172a;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-100 text-ink-800 antialiased;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Reusable component classes
+   Defined once here so that buttons, inputs and cards look the same on every
+   page instead of each screen inventing its own spacing and colours.
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* The shared button shape is applied to every variant through a grouped
+     selector. Tailwind v4 only lets @apply reference real utilities, not other
+     custom classes, so composing with "@apply btn" inside each variant would
+     fail to build. Grouping the selectors keeps the rules in one place without
+     relying on that. */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger,
+  .btn-success {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2
+           text-sm font-medium transition-colors
+           focus:outline-none focus:ring-2 focus:ring-offset-1
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-brand-500 text-white hover:bg-brand-600 focus:ring-brand-400;
+  }
+
+  .btn-secondary {
+    @apply border border-ink-300 bg-white text-ink-700
+           hover:bg-ink-50 focus:ring-ink-300;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-400;
+  }
+
+  .btn-success {
+    @apply bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-400;
+  }
+
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  .field-label {
+    @apply mb-1 block text-sm font-medium text-ink-700;
+  }
+
+  .field-input {
+    @apply w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm
+           text-ink-900 placeholder-ink-400 transition-colors
+           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200
+           disabled:bg-ink-100;
+  }
+
+  .card {
+    @apply rounded-xl border border-ink-200 bg-white shadow-sm;
+  }
+
+  .card-header {
+    @apply flex items-center justify-between border-b border-ink-200 px-5 py-4;
+  }
+
+  .card-title {
+    @apply text-base font-semibold text-ink-900;
+  }
+
+  .table-wrap {
+    /* Wide tables scroll inside their own container so the page itself never
+       scrolls sideways on a narrow screen. */
+    @apply w-full overflow-x-auto;
+  }
+
+  .table {
+    @apply w-full text-left text-sm;
+  }
+
+  .table thead th {
+    @apply whitespace-nowrap border-b border-ink-200 bg-ink-50 px-4 py-3
+           text-xs font-semibold uppercase tracking-wide text-ink-500;
+  }
+
+  .table tbody td {
+    @apply border-b border-ink-100 px-4 py-3 align-middle text-ink-700;
+  }
+
+  .table tbody tr:hover {
+    @apply bg-ink-50;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5
+           text-xs font-medium whitespace-nowrap;
+  }
+}
