@@ -1,0 +1,36 @@
+# ---- .NET ----
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# ---- Node / React ----
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+
+# ---- Android ----
+.gradle/
+build/
+local.properties
+captures/
+.cxx/
+*.apk
+*.aab
+*.keystore
+
+# ---- IDE ----
+.idea/
+*.iml
+.vscode/
+
+# ---- OS ----
+Thumbs.db
+.DS_Store
+
+# ---- Secrets: never commit real credentials ----
+appsettings.Production.json
+*.secrets.json
