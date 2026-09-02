@@ -45,6 +45,9 @@ builder.Services.Configure<QrSettings>(
 // -----------------------------------------------------------------------------
 builder.Services.AddSingleton<MongoContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IStationRepository, StationRepository>();
+builder.Services.AddScoped<ISlotRepository, SlotRepository>();
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<DatabaseSeeder>();
 
 // -----------------------------------------------------------------------------
@@ -59,6 +62,8 @@ builder.Services.AddSingleton<ITokenService, JwtTokenService>();
 // depend on is implemented behind one of these interfaces.
 // -----------------------------------------------------------------------------
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IStationService, StationService>();
+builder.Services.AddScoped<ISlotService, SlotService>();
 
 // -----------------------------------------------------------------------------
 // Authentication
