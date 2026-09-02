@@ -34,3 +34,6 @@ Thumbs.db
 # ---- Secrets: never commit real credentials ----
 appsettings.Production.json
 *.secrets.json
+
+# ---- publish output ----
+publish/
