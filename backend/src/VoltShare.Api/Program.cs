@@ -55,6 +55,7 @@ builder.Services.AddScoped<DatabaseSeeder>();
 // -----------------------------------------------------------------------------
 builder.Services.AddSingleton<IPasswordHasher, BCryptPasswordHasher>();
 builder.Services.AddSingleton<ITokenService, JwtTokenService>();
+builder.Services.AddSingleton<IQrTokenService, QrTokenService>();
 
 // -----------------------------------------------------------------------------
 // Business services
@@ -64,6 +65,8 @@ builder.Services.AddSingleton<ITokenService, JwtTokenService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IStationService, StationService>();
 builder.Services.AddScoped<ISlotService, SlotService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 // -----------------------------------------------------------------------------
 // Authentication
