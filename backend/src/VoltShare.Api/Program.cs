@@ -135,11 +135,71 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(WebClientCorsPolicy, policy =>
     {
-        policy.WithOrigins(allowedOrigins)
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.AllowAnyHeader()
+              .AllowAnyMethod()
+
+              // An origin must match exactly, so allowing only the configured
+              // list meant that opening the same site through 127.0.0.1 or the
+              // machine's own network address was refused, with the browser
+              // reporting nothing more useful than a failed request.
+              //
+              // The rule below accepts the configured origins plus any address
+              // on this machine or the local network, which is where both
+              // clients are served from during development and for the
+              // demonstration. A service published on the public internet
+              // would drop the second half and keep the explicit list only.
+              .SetIsOriginAllowed(origin =>
+              {
+                  if (allowedOrigins.Contains(origin, StringComparer.OrdinalIgnoreCase))
+                  {
+                      return true;
+                  }
+
+                  if (!Uri.TryCreate(origin, UriKind.Absolute, out var uri))
+                  {
+                      return false;
+                  }
+
+                  return IsLocalOrPrivateHost(uri.Host);
+              });
     });
 });
+
+// Recognises the addresses a browser on this machine or on the same network
+// can reach the service by: loopback, and the three private IPv4 ranges.
+static bool IsLocalOrPrivateHost(string host)
+{
+    if (host.Equals("localhost", StringComparison.OrdinalIgnoreCase))
+    {
+        return true;
+    }
+
+    if (!System.Net.IPAddress.TryParse(host, out var address))
+    {
+        return false;
+    }
+
+    if (System.Net.IPAddress.IsLoopback(address))
+    {
+        return true;
+    }
+
+    // Only IPv4 private ranges are considered; anything else is treated as
+    // external and refused.
+    var octets = address.GetAddressBytes();
+    if (octets.Length != 4)
+    {
+        return false;
+    }
+
+    return octets[0] switch
+    {
+        10 => true,                                   // 10.0.0.0/8
+        172 => octets[1] >= 16 && octets[1] <= 31,    // 172.16.0.0/12
+        192 => octets[1] == 168,                      // 192.168.0.0/16
+        _ => false
+    };
+}
 
 // -----------------------------------------------------------------------------
 // MVC controllers and API documentation

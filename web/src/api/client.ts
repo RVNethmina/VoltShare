@@ -138,15 +138,21 @@ async function request<T>(
     })
   } catch (error) {
     // A network level failure never reaches the server, so there is no
-    // ProblemDetails body to read. Report it as something the user can act on.
+    // ProblemDetails body to read.
     if (error instanceof DOMException && error.name === 'AbortError') {
       throw error
     }
 
+    // The browser reports a blocked cross origin request and a service that is
+    // genuinely down in exactly the same way, so name both possibilities and
+    // include the two addresses involved. Without this the message is the same
+    // whatever the cause, which makes the real problem hard to find.
     throw new ApiError(
       0,
       'NETWORK_ERROR',
-      'Could not reach the VoltShare service. Check that the API is running.',
+      `Could not reach the VoltShare service at ${BASE_URL}. ` +
+        `Either the API is not running, or this page's address ` +
+        `(${window.location.origin}) is not an allowed origin on the API.`,
     )
   }
 
