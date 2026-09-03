@@ -18,7 +18,7 @@ package lk.sliit.voltshare.ui.prosumer
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
@@ -53,6 +53,7 @@ class BookingDetailActivity : AppCompatActivity() {
 
         reservationId = intent.getStringExtra(EXTRA_RESERVATION_ID).orEmpty()
 
+        binding.buttonBack.setOnClickListener { finish() }
         binding.buttonCancel.setOnClickListener { confirmCancel() }
 
         binding.buttonModify.setOnClickListener {
@@ -131,12 +132,13 @@ class BookingDetailActivity : AppCompatActivity() {
         binding.textStatus.text = booking.status
         StatusStyles.apply(binding.textStatus, booking.status)
 
-        binding.textStation.text = "Station: ${booking.stationName ?: "—"}"
-        binding.textWindow.text = "Window: " +
+        // The row labels are in the layout, so only the values are set here.
+        binding.textStation.text = booking.stationName ?: "—"
+        binding.textWindow.text =
             Formatters.window(booking.reservationStartUtc, booking.reservationEndUtc)
-        binding.textType.text = "Transfer: ${booking.type}"
-        binding.textEnergy.text = "Energy: ${Formatters.energy(booking.energyKwh)}"
-        binding.textCreated.text = "Requested ${Formatters.dateTime(booking.createdAtUtc)}"
+        binding.textType.text = booking.type
+        binding.textEnergy.text = Formatters.energy(booking.energyKwh)
+        binding.textCreated.text = Formatters.dateTime(booking.createdAtUtc)
 
         binding.buttonModify.visibility = if (booking.canBeModified) View.VISIBLE else View.GONE
         binding.buttonCancel.visibility = if (booking.canBeCancelled) View.VISIBLE else View.GONE
@@ -165,7 +167,7 @@ class BookingDetailActivity : AppCompatActivity() {
     private fun confirmCancel() {
         val booking = reservation ?: return
 
-        AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder(this)
             .setTitle("Cancel this booking?")
             .setMessage(
                 "Booking ${booking.reservationNo} will be withdrawn and its place " +

@@ -18,6 +18,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.content.res.ColorStateList
 import androidx.core.content.ContextCompat
 import lk.sliit.voltshare.R
 import lk.sliit.voltshare.data.remote.ApiConstants
@@ -40,11 +41,12 @@ class BookingSummaryActivity : AppCompatActivity() {
         binding = ActivityBookingSummaryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // This screen is light at the top, so the status bar needs dark
-        // icons or the clock is unreadable, and the content needs the
-        // status bar inset so it does not sit underneath it.
-        SystemBars.useDarkStatusBarIcons(window, true)
-        SystemBars.applyInsets(binding.textIcon)
+        // This screen has no dark header, so the status bar icons have to
+        // follow whichever theme is running: dark icons on the light page,
+        // light icons on the dark one. The content is padded by the height of
+        // the status bar so it does not sit underneath the clock.
+        SystemBars.applyThemeStatusBarIcons(window, this)
+        SystemBars.applyInsets(binding.contentRoot, binding.contentRoot)
 
         val action = intent.getStringExtra(EXTRA_ACTION).orEmpty()
         val message = intent.getStringExtra(EXTRA_MESSAGE).orEmpty()
@@ -59,19 +61,20 @@ class BookingSummaryActivity : AppCompatActivity() {
         binding.textStatus.text = status
         StatusStyles.apply(binding.textStatus, status)
 
-        binding.textStation.text = "Station: ${intent.getStringExtra(EXTRA_STATION) ?: "—"}"
-        binding.textWindow.text = "Window: " + Formatters.window(
+        // The row labels are in the layout, so only the values are set here.
+        binding.textStation.text = intent.getStringExtra(EXTRA_STATION) ?: "—"
+        binding.textWindow.text = Formatters.window(
             intent.getStringExtra(EXTRA_START), intent.getStringExtra(EXTRA_END)
         )
-        binding.textEnergy.text = "Energy: " +
+        binding.textEnergy.text =
             Formatters.energy(intent.getDoubleExtra(EXTRA_ENERGY, 0.0)) +
-            " (${intent.getStringExtra(EXTRA_TYPE)})"
+                " (${intent.getStringExtra(EXTRA_TYPE)})"
 
         // A cancelled booking is a normal outcome rather than a success, so the
         // marker is toned down instead of showing a green tick.
         if (status == ApiConstants.STATUS_CANCELLED) {
             binding.textIcon.text = "✕"
-            binding.textIcon.setBackgroundColor(
+            binding.textIcon.backgroundTintList = ColorStateList.valueOf(
                 ContextCompat.getColor(this, R.color.status_cancelled_bg)
             )
             binding.textIcon.setTextColor(

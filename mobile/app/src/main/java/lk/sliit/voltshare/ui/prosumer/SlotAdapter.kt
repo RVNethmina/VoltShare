@@ -12,6 +12,7 @@ package lk.sliit.voltshare.ui.prosumer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.content.res.ColorStateList
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import lk.sliit.voltshare.R
@@ -78,24 +79,23 @@ class SlotAdapter(
 
             val isFull = slot.remainingCapacity <= 0
 
-            if (isFull) {
+            // The pill behind the count is tinted rather than repainted, so it
+            // keeps the rounded shape and padding declared in item_slot.xml.
+            val (badgeBackground, badgeText) = if (isFull) {
                 binding.textRemaining.text = context.getString(R.string.slot_full)
-                binding.textRemaining.setBackgroundColor(
-                    ContextCompat.getColor(context, R.color.status_rejected_bg)
-                )
-                binding.textRemaining.setTextColor(
-                    ContextCompat.getColor(context, R.color.status_rejected_fg)
-                )
+                R.color.status_rejected_bg to R.color.status_rejected_fg
             } else {
                 binding.textRemaining.text =
                     context.getString(R.string.slot_free_format, slot.remainingCapacity)
-                binding.textRemaining.setBackgroundColor(
-                    ContextCompat.getColor(context, R.color.status_completed_bg)
-                )
-                binding.textRemaining.setTextColor(
-                    ContextCompat.getColor(context, R.color.status_completed_fg)
-                )
+                R.color.status_completed_bg to R.color.status_completed_fg
             }
+
+            binding.textRemaining.backgroundTintList = ColorStateList.valueOf(
+                ContextCompat.getColor(context, badgeBackground)
+            )
+            binding.textRemaining.setTextColor(
+                ContextCompat.getColor(context, badgeText)
+            )
 
             // A full window is dimmed and cannot be chosen. The service refuses
             // it as well, so this only saves the user a pointless request.
@@ -105,7 +105,7 @@ class SlotAdapter(
             val isSelected = slot.id == selectedSlotId
             binding.cardSlot.strokeColor = ContextCompat.getColor(
                 context,
-                if (isSelected) R.color.brand_500 else R.color.ink_200
+                if (isSelected) R.color.brand_500 else R.color.line
             )
 
             binding.root.setOnClickListener {

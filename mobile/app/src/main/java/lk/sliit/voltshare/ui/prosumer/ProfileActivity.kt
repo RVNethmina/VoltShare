@@ -15,7 +15,7 @@ package lk.sliit.voltshare.ui.prosumer
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
@@ -55,6 +55,7 @@ class ProfileActivity : AppCompatActivity() {
         binding.inputPhone.setText(session?.phone.orEmpty())
         binding.inputAddress.setText(session?.address.orEmpty())
 
+        binding.buttonBack.setOnClickListener { finish() }
         binding.buttonSave.setOnClickListener { save() }
         binding.buttonRequestDeactivation.setOnClickListener { confirmDeactivationRequest() }
 
@@ -142,7 +143,7 @@ class ProfileActivity : AppCompatActivity() {
      * Explains what a closure request means before raising it.
      */
     private fun confirmDeactivationRequest() {
-        AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder(this)
             .setTitle("Request account closure?")
             .setMessage(
                 "The back-office team will be asked to close your VoltShare account. " +

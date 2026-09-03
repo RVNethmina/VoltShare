@@ -58,8 +58,10 @@ class StationsActivity : AppCompatActivity() {
         binding.recyclerStations.layoutManager = LinearLayoutManager(this)
         binding.recyclerStations.adapter = adapter
 
+        binding.buttonBack.setOnClickListener { finish() }
         binding.buttonMap.setOnClickListener { openMapAt(null) }
         binding.swipeRefresh.setOnRefreshListener { loadStations(showSpinner = false) }
+        SystemBars.styleRefreshSpinner(binding.swipeRefresh)
 
         // Ask for the permission the first time; if it is already granted the
         // system returns immediately and the list loads straight away.

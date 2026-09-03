@@ -25,6 +25,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.launch
 import lk.sliit.voltshare.AppServices
@@ -35,6 +36,7 @@ import lk.sliit.voltshare.data.remote.StationDto
 import lk.sliit.voltshare.databinding.ActivityStationMapBinding
 import lk.sliit.voltshare.util.Formatters
 import lk.sliit.voltshare.util.LocationHelper
+import lk.sliit.voltshare.util.SystemBars
 import android.widget.Toast
 
 class StationMapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -57,6 +59,9 @@ class StationMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityStationMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        SystemBars.applyInsets(binding.headerBar)
+        binding.buttonBack.setOnClickListener { finish() }
 
         focusStationId = intent.getStringExtra(EXTRA_FOCUS_STATION_ID)
 
@@ -81,6 +86,15 @@ class StationMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         googleMap.uiSettings.isZoomControlsEnabled = true
         googleMap.uiSettings.isMapToolbarEnabled = false
+
+        // Google's default map is a bright white sheet, which is glaring once
+        // the device is in its dark theme, so a dark styling is applied to
+        // match the rest of the application.
+        if (SystemBars.isNightMode(this)) {
+            googleMap.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style_night)
+            )
+        }
 
         // The blue dot is only enabled once the user has actually granted the
         // permission, otherwise the call throws.

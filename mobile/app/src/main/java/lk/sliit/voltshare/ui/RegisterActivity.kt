@@ -12,7 +12,7 @@ package lk.sliit.voltshare.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
@@ -21,6 +21,7 @@ import lk.sliit.voltshare.data.remote.ApiClient
 import lk.sliit.voltshare.data.remote.ApiException
 import lk.sliit.voltshare.data.remote.RegisterProsumerRequest
 import lk.sliit.voltshare.databinding.ActivityRegisterBinding
+import lk.sliit.voltshare.util.SystemBars
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -35,9 +36,13 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        SystemBars.applyInsets(binding.headerBar)
+
         binding.buttonRegister.setOnClickListener { attemptRegister() }
 
-        // Returns to the sign in screen this activity was opened from.
+        // Both of these return to the sign in screen this activity was opened
+        // from: the arrow in the header, and the link under the form.
+        binding.buttonBack.setOnClickListener { finish() }
         binding.buttonBackToLogin.setOnClickListener { finish() }
     }
 
@@ -103,7 +108,7 @@ class RegisterActivity : AppCompatActivity() {
      * team activates it, which is the rule the service applies.
      */
     private fun showPendingApprovalDialog() {
-        AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder(this)
             .setTitle("Registration received")
             .setMessage(
                 "Your prosumer account has been created and is waiting for the back-office " +

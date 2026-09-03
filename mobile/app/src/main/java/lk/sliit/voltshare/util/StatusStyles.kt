@@ -4,12 +4,17 @@
 // Description : Applies the colour of a reservation status to a label. Kept in
 //               one place so a status looks the same on every screen, and the
 //               same as it does in the web application.
+//
+//               The colours are looked up by name, and the names are redefined
+//               in values-night, so a badge restyles itself for the dark theme
+//               without this file knowing which theme is running.
 // Author      : <IT Number - Member Name>
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
 package lk.sliit.voltshare.util
 
+import android.content.res.ColorStateList
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import lk.sliit.voltshare.R
@@ -42,7 +47,16 @@ object StatusStyles {
                 R.color.status_cancelled_bg to R.color.status_cancelled_fg
         }
 
-        label.setBackgroundColor(ContextCompat.getColor(context, backgroundRes))
+        // The badge is a rounded pill drawn in white, which is then tinted with
+        // the status colour. Tinting rather than replacing the background keeps
+        // the corner radius and the padding the layout declared.
+        if (label.background == null) {
+            label.setBackgroundResource(R.drawable.bg_badge)
+        }
+
+        label.backgroundTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(context, backgroundRes))
+
         label.setTextColor(ContextCompat.getColor(context, textRes))
     }
 }

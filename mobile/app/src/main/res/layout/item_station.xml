@@ -8,16 +8,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.VoltShare.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="6dp"
-    android:layout_marginEnd="12dp"
-    android:layout_marginBottom="6dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="5dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardCornerRadius="14dp"
-    app:cardElevation="2dp">
+    app:rippleColor="@color/brand_soft">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,32 +30,62 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textName"
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_icon_circle"
+                android:backgroundTint="@color/brand_soft"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_place"
+                app:tint="@color/brand_soft_fg" />
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
                 android:layout_weight="1"
-                android:textAppearance="@style/TextSectionTitle"
-                tools:text="Colombo Fort Solar Hub" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextSectionTitle"
+                    tools:text="Colombo Fort Solar Hub" />
+
+                <TextView
+                    android:id="@+id/textAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextLabel"
+                    tools:text="1 York St, Colombo" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textDistance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:textColor="@color/brand_600"
-                android:textSize="12sp"
+                android:textSize="12.5sp"
                 android:textStyle="bold"
-                tools:text="14.5 km away" />
+                tools:text="14.5 km" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textAddress"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textAppearance="@style/TextLabel"
-            tools:text="1 York St, Colombo" />
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:background="@color/line" />
 
+        <!-- Capacity, battery places and opening hours, each read straight from
+             the record the service returned. -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,6 +97,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textAppearance="@style/TextBody"
                 tools:text="250.0 kWh" />
 
@@ -74,16 +106,18 @@
                 android:id="@+id/textBattery"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.2"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textAppearance="@style/TextBody"
                 tools:text="Battery 7 / 20" />
 
             <TextView
                 android:id="@+id/textHours"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="end"
+                android:maxLines="1"
                 android:textAppearance="@style/TextBody"
                 tools:text="06:00-20:00" />
         </LinearLayout>

@@ -57,6 +57,8 @@ class CreateBookingActivity : AppCompatActivity() {
 
         SystemBars.applyInsets(binding.headerBar, binding.buttonConfirm)
 
+        binding.buttonBack.setOnClickListener { finish() }
+
         editingReservationId = intent.getStringExtra(EXTRA_EDIT_RESERVATION_ID)
 
         if (editingReservationId != null) {

@@ -99,4 +99,44 @@
     <string name="scan_verified_hint">Checked against the VoltShare service.</string>
     <string name="finalise_transfer">Finalise energy transfer</string>
     <string name="scan_prompt">Point the camera at the prosumer QR code</string>
+    <!-- Navigation and accessibility -->
+    <string name="back">Back</string>
+    <string name="app_logo">VoltShare</string>
+
+    <!-- Home screen sections -->
+    <string name="section_overview">Your activity</string>
+    <string name="section_quick_actions">Quick actions</string>
+    <string name="section_next_booking">Next booking</string>
+    <string name="no_upcoming_bookings">You have no upcoming bookings yet.</string>
+    <string name="role_grid_operator">Grid Operator</string>
+    <string name="role_prosumer">Solar Prosumer</string>
+
+    <!-- Quick action tiles -->
+    <string name="action_book_hint">Request a transfer window</string>
+    <string name="action_bookings_hint">Current and past requests</string>
+    <string name="action_nodes_hint">Microgrids close to you</string>
+    <string name="action_profile_hint">Details and account</string>
+
+    <!-- Sign in and registration -->
+    <string name="login_footer">Prosumers and grid operators only.</string>
+    <string name="register_intro">Register as a solar prosumer. Your account is reviewed by the back-office team before you can sign in.</string>
+    <string name="nic_helper">Used as your unique account identifier</string>
+    <string name="password_helper">At least 6 characters</string>
+
+    <!-- Operator -->
+    <string name="section_workload">Today at the grid</string>
+    <string name="scan_hint">Verify a prosumer booking and finalise the transfer.</string>
+
+    <!-- Booking screens -->
+    <string name="section_your_request">Your request</string>
+    <string name="booking_locked_default">This booking can no longer be changed.</string>
+    <!-- Row labels on the detail screens. The value beside each of these is
+         taken straight from the record the Web API returned. -->
+    <string name="label_station">Station</string>
+    <string name="label_window">Window</string>
+    <string name="label_transfer">Transfer</string>
+    <string name="label_energy">Energy</string>
+    <string name="label_requested">Requested</string>
+    <string name="label_prosumer">Prosumer</string>
+    <string name="label_nic">NIC</string>
 </resources>

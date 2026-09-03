@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  bg_logo_tile.xml - VoltShare Mobile
+  The rounded amber tile the lightning mark sits on.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="315"
+        android:endColor="@color/brand_700"
+        android:startColor="@color/brand_500" />
+    <corners android:radius="18dp" />
+</shape>

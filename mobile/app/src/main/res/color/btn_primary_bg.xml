@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_primary_bg.xml - VoltShare Mobile
+  Fill of the primary button. A disabled button drops to a flat neutral so it
+  is obviously unavailable rather than simply unresponsive.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/ink_200" android:state_enabled="false" />
+    <item android:color="@color/brand_500" />
+</selector>

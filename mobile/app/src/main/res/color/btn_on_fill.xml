@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_on_fill.xml - VoltShare Mobile
+  Label drawn on a strong coloured fill. White reads on both the red and the
+  green fills in either theme.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/ink_400" android:state_enabled="false" />
+    <item android:color="@color/white" />
+</selector>

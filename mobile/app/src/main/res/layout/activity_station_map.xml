@@ -3,6 +3,9 @@
   activity_station_map.xml - VoltShare Mobile
   Google Map showing the microgrid nodes returned by the service, each plotted
   from the latitude and longitude stored against it.
+
+  The back button floats over the map rather than sitting in a header bar, so
+  the map itself keeps the whole screen.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,45 +19,86 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!-- Padded for the status bar by SystemBars.applyInsets. -->
+    <FrameLayout
+        android:id="@+id/headerBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonBack"
+            style="@style/Widget.VoltShare.Button.RailIcon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:contentDescription="@string/back"
+            app:backgroundTint="@color/rail"
+            app:cornerRadius="22dp"
+            app:icon="@drawable/ic_arrow_back" />
+    </FrameLayout>
+
     <!-- Details of the node the user last tapped. -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardDetails"
+        style="@style/Widget.VoltShare.Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
         android:visibility="gone"
-        app:cardCornerRadius="14dp"
-        app:cardElevation="6dp">
+        app:cardElevation="8dp"
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/textMapName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextSectionTitle"
-                tools:text="Colombo Fort Solar Hub" />
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_icon_circle"
+                android:backgroundTint="@color/brand_soft"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:src="@drawable/ic_place"
+                app:tint="@color/brand_soft_fg" />
 
-            <TextView
-                android:id="@+id/textMapAddress"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:textAppearance="@style/TextLabel"
-                tools:text="1 York St, Colombo" />
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textMapDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textAppearance="@style/TextBody"
-                tools:text="250.0 kWh, battery 7 / 20" />
+                <TextView
+                    android:id="@+id/textMapName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextSectionTitle"
+                    tools:text="Colombo Fort Solar Hub" />
+
+                <TextView
+                    android:id="@+id/textMapAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextLabel"
+                    tools:text="1 York St, Colombo" />
+
+                <TextView
+                    android:id="@+id/textMapDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textAppearance="@style/TextBody"
+                    tools:text="250.0 kWh, battery 7 / 20" />
+            </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -62,5 +106,6 @@
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/brand_500" />
 </FrameLayout>

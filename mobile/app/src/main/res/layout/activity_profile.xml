@@ -10,83 +10,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ink_100"
+    android:background="@color/canvas"
+    android:clipToPadding="false"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="28dp">
 
         <LinearLayout
             android:id="@+id/headerBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/ink_900"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:background="@drawable/bg_header"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="22dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_profile"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonBack"
+                style="@style/Widget.VoltShare.Button.RailIcon"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:contentDescription="@string/back"
+                app:icon="@drawable/ic_arrow_back" />
 
-            <TextView
-                android:id="@+id/textNic"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@color/ink_400"
-                android:textSize="12sp"
-                tools:text="NIC 199988776655" />
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_profile"
+                    android:textAppearance="@style/TextHeaderTitle" />
+
+                <TextView
+                    android:id="@+id/textNic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:textAppearance="@style/TextHeaderSubtitle"
+                    tools:text="NIC 199988776655" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
             android:id="@+id/textError"
+            style="@style/Widget.VoltShare.Notice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/status_rejected_bg"
-            android:padding="12dp"
-            android:textColor="@color/status_rejected_fg"
-            android:textSize="13sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_notice_danger"
+            android:drawableStart="@drawable/ic_error"
+            android:drawableTint="@color/danger_fg"
+            android:textColor="@color/danger_fg"
             android:visibility="gone"
             tools:text="Could not save your details." />
 
         <TextView
             android:id="@+id/textNotice"
+            style="@style/Widget.VoltShare.Notice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/status_completed_bg"
-            android:padding="12dp"
-            android:textColor="@color/status_completed_fg"
-            android:textSize="13sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_notice_success"
+            android:drawableStart="@drawable/ic_check_circle"
+            android:drawableTint="@color/success_fg"
+            android:textColor="@color/success_fg"
             android:visibility="gone"
             tools:text="Your details have been saved." />
 
         <!-- Shown once the prosumer has asked for the account to be closed. -->
         <TextView
             android:id="@+id/textDeactivationPending"
+            style="@style/Widget.VoltShare.Notice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/status_pending_bg"
-            android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_notice_warning"
+            android:drawableStart="@drawable/ic_info"
+            android:drawableTint="@color/status_pending_fg"
             android:text="@string/deactivation_requested_notice"
             android:textColor="@color/status_pending_fg"
-            android:textSize="13sp"
             android:visibility="gone" />
 
         <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.VoltShare.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:cardCornerRadius="14dp"
-            app:cardElevation="2dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -98,17 +127,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/account_details"
-                    android:textAppearance="@style/TextSectionTitle" />
+                    android:textAppearance="@style/TextEyebrow" />
 
                 <!-- The NIC is the primary key of the account and the email is
                      the login identifier, so neither is editable here. -->
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VoltShare.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:enabled="false"
-                    android:hint="@string/email"
-                    app:boxBackgroundMode="outline">
+                    android:hint="@string/email">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputEmail"
@@ -119,11 +148,11 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VoltShare.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="@string/full_name"
-                    app:boxBackgroundMode="outline">
+                    android:hint="@string/full_name">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputFullName"
@@ -133,11 +162,11 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VoltShare.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="@string/phone"
-                    app:boxBackgroundMode="outline">
+                    android:hint="@string/phone">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputPhone"
@@ -147,11 +176,11 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.VoltShare.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="@string/address"
-                    app:boxBackgroundMode="outline">
+                    android:hint="@string/address">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputAddress"
@@ -163,24 +192,21 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonSave"
                     android:layout_width="match_parent"
-                    android:layout_height="52dp"
+                    android:layout_height="54dp"
                     android:layout_marginTop="18dp"
-                    android:text="@string/save"
-                    app:cornerRadius="10dp" />
+                    android:text="@string/save" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonRequestDeactivation"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+            style="@style/Widget.VoltShare.Button.Outlined.Danger"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="14dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/request_deactivation"
-            android:textColor="@color/danger"
-            app:cornerRadius="10dp"
-            app:strokeColor="@color/danger" />
+            android:text="@string/request_deactivation" />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -188,7 +214,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp"
+            android:indeterminateTint="@color/brand_500"
             android:visibility="gone" />
     </LinearLayout>
 </ScrollView>

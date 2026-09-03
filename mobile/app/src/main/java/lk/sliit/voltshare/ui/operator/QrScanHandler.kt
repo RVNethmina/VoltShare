@@ -17,7 +17,7 @@ package lk.sliit.voltshare.ui.operator
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.FrameLayout
-import androidx.appcompat.app.AlertDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.journeyapps.barcodescanner.ScanOptions
@@ -97,7 +97,7 @@ object QrScanHandler {
         container.setPadding(padding, padding / 2, padding, 0)
         container.addView(input)
 
-        AlertDialog.Builder(activity)
+        MaterialAlertDialogBuilder(activity)
             .setTitle(R.string.enter_token_manually)
             .setView(container)
             .setNegativeButton(R.string.cancel, null)

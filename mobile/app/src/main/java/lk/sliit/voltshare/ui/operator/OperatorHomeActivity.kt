@@ -24,6 +24,9 @@ import lk.sliit.voltshare.data.remote.ApiException
 import lk.sliit.voltshare.databinding.ActivityOperatorHomeBinding
 import com.journeyapps.barcodescanner.ScanContract
 import lk.sliit.voltshare.ui.LoginActivity
+import android.content.res.ColorStateList
+import androidx.core.content.ContextCompat
+import lk.sliit.voltshare.databinding.ItemStatTileBinding
 import lk.sliit.voltshare.util.SystemBars
 
 class OperatorHomeActivity : AppCompatActivity() {
@@ -73,9 +76,10 @@ class OperatorHomeActivity : AppCompatActivity() {
             QrScanHandler.promptForToken(this) { token -> verifyToken(token) }
         }
         binding.swipeRefresh.setOnRefreshListener { loadDashboard(showSpinner = false) }
+        SystemBars.styleRefreshSpinner(binding.swipeRefresh)
 
         // The header would otherwise be drawn underneath the status bar.
-        SystemBars.applyInsets(binding.headerBar, binding.progress)
+        SystemBars.applyInsets(binding.headerBar, binding.scrollContent)
 
         // The first load is left to onResume, which always runs after
         // onCreate; calling it here as well fetched the dashboard twice.
@@ -89,6 +93,23 @@ class OperatorHomeActivity : AppCompatActivity() {
 
     /** Sets the fixed caption and hint on each tile. */
     private fun labelTiles() {
+        styleTile(
+            binding.tilePending, R.drawable.ic_clock,
+            R.color.status_pending_bg, R.color.status_pending_fg
+        )
+        styleTile(
+            binding.tileApproved, R.drawable.ic_check_circle,
+            R.color.status_approved_bg, R.color.status_approved_fg
+        )
+        styleTile(
+            binding.tileCompletedToday, R.drawable.ic_bolt,
+            R.color.status_completed_bg, R.color.status_completed_fg
+        )
+        styleTile(
+            binding.tileStations, R.drawable.ic_place,
+            R.color.brand_soft, R.color.brand_soft_fg
+        )
+
         binding.tilePending.textTileLabel.text = getString(R.string.tile_awaiting_approval)
         binding.tilePending.textTileHint.text = getString(R.string.tile_awaiting_approval_hint)
 
@@ -161,5 +182,24 @@ class OperatorHomeActivity : AppCompatActivity() {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
+    }
+
+    /**
+     * Gives one tile its own symbol and colour.
+     *
+     * Four identical amber bolts would tell the reader nothing, so each count
+     * carries the icon of the state it reports.
+     */
+    private fun styleTile(
+        tile: ItemStatTileBinding,
+        iconRes: Int,
+        backgroundRes: Int,
+        foregroundRes: Int
+    ) {
+        tile.imageTileIcon.setImageResource(iconRes)
+        tile.imageTileIcon.backgroundTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(this, backgroundRes))
+        tile.imageTileIcon.imageTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(this, foregroundRes))
     }
 }

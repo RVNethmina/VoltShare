@@ -21,9 +21,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import lk.sliit.voltshare.AppServices
+import lk.sliit.voltshare.R
 import lk.sliit.voltshare.data.remote.ApiClient
 import lk.sliit.voltshare.data.remote.ApiException
 import lk.sliit.voltshare.data.remote.ReservationDto
@@ -58,16 +61,18 @@ class ScanResultActivity : AppCompatActivity() {
 
         val name = intent.getStringExtra(EXTRA_PROSUMER_NAME)
         val nic = intent.getStringExtra(EXTRA_PROSUMER_NIC).orEmpty()
-        binding.textProsumer.text = "Prosumer: ${name ?: "—"} ($nic)"
+        // The row labels are in the layout, so only the values are set here.
+        binding.textProsumer.text = "${name ?: "—"} ($nic)"
 
-        binding.textStation.text = "Station: ${intent.getStringExtra(EXTRA_STATION) ?: "—"}"
-        binding.textWindow.text = "Window: " + Formatters.window(
+        binding.textStation.text = intent.getStringExtra(EXTRA_STATION) ?: "—"
+        binding.textWindow.text = Formatters.window(
             intent.getStringExtra(EXTRA_START), intent.getStringExtra(EXTRA_END)
         )
-        binding.textEnergy.text = "Energy: " +
+        binding.textEnergy.text =
             Formatters.energy(intent.getDoubleExtra(EXTRA_ENERGY, 0.0)) +
-            " (${intent.getStringExtra(EXTRA_TYPE)})"
+                " (${intent.getStringExtra(EXTRA_TYPE)})"
 
+        binding.buttonBack.setOnClickListener { finish() }
         binding.buttonComplete.setOnClickListener { complete() }
         binding.buttonDone.setOnClickListener { finish() }
     }
@@ -91,17 +96,19 @@ class ScanResultActivity : AppCompatActivity() {
                 StatusStyles.apply(binding.textStatus, summary.reservation.status)
 
                 binding.buttonComplete.visibility = View.GONE
-                binding.textError.setBackgroundColor(
-                    androidx.core.content.ContextCompat.getColor(
-                        this@ScanResultActivity,
-                        lk.sliit.voltshare.R.color.status_completed_bg
-                    )
+
+                // The same panel is reused for the confirmation, so it is
+                // switched from the refusal style to the confirming one.
+                binding.textError.setBackgroundResource(R.drawable.bg_notice_success)
+                binding.textError.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_check_circle, 0, 0, 0
+                )
+                TextViewCompat.setCompoundDrawableTintList(
+                    binding.textError,
+                    ContextCompat.getColorStateList(this@ScanResultActivity, R.color.success_fg)
                 )
                 binding.textError.setTextColor(
-                    androidx.core.content.ContextCompat.getColor(
-                        this@ScanResultActivity,
-                        lk.sliit.voltshare.R.color.status_completed_fg
-                    )
+                    ContextCompat.getColor(this@ScanResultActivity, R.color.success_fg)
                 )
                 binding.textError.text = summary.message
                 binding.textError.visibility = View.VISIBLE

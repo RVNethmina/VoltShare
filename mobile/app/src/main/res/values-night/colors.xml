@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  colors.xml (night) - VoltShare Mobile
+  The dark palette. Every name here also exists in values/colors.xml, so
+  Android swaps the whole scheme when the device is in dark mode and no layout
+  has to know which theme is active.
+
+  Three deliberate choices:
+    * The neutral ramp is inverted, so ink_900 is still "the strongest text".
+    * The brand amber is lightened, because the darker amber used on white is
+      too low in contrast against a dark surface.
+    * Status backgrounds become deep tints with a light foreground, rather than
+      pale fills with dark text, which would glare on a dark screen.
+-->
+<resources>
+    <!-- Surfaces -->
+    <color name="canvas">#FF0A1120</color>
+    <color name="surface">#FF111C31</color>
+    <color name="surface_2">#FF16233B</color>
+    <color name="line">#FF24334F</color>
+
+    <!-- The header keeps its dark identity in both themes. -->
+    <color name="rail">#FF080E1A</color>
+    <color name="rail_2">#FF142036</color>
+    <color name="rail_fg">#FFE2E8F0</color>
+    <color name="rail_muted">#FF94A3B8</color>
+
+    <!-- Brand, lifted for contrast against a dark surface -->
+    <color name="brand_500">#FFFBBF24</color>
+    <color name="brand_600">#FFFCD34D</color>
+    <color name="brand_700">#FFF59E0B</color>
+    <color name="brand_100">#FF3A2A08</color>
+    <color name="brand_fg">#FF3B2703</color>
+    <color name="brand_soft">#FF3A2A08</color>
+    <color name="brand_soft_fg">#FFFDE68A</color>
+
+    <!-- Neutral ramp, inverted -->
+    <color name="ink_900">#FFF8FAFC</color>
+    <color name="ink_800">#FFE2E8F0</color>
+    <color name="ink_700">#FFCBD5E1</color>
+    <color name="ink_500">#FF94A3B8</color>
+    <color name="ink_400">#FF708098</color>
+    <color name="ink_200">#FF24334F</color>
+    <color name="ink_100">#FF16233B</color>
+    <color name="ink_50">#FF111C31</color>
+
+    <!-- Reservation status colours -->
+    <color name="status_pending_bg">#FF3E2C09</color>
+    <color name="status_pending_fg">#FFFCD34D</color>
+    <color name="status_approved_bg">#FF13294C</color>
+    <color name="status_approved_fg">#FF93C5FD</color>
+    <color name="status_completed_bg">#FF06301F</color>
+    <color name="status_completed_fg">#FF6EE7B7</color>
+    <color name="status_cancelled_bg">#FF24334F</color>
+    <color name="status_cancelled_fg">#FFCBD5E1</color>
+    <color name="status_rejected_bg">#FF43161B</color>
+    <color name="status_rejected_fg">#FFFCA5A5</color>
+
+    <!-- Feedback -->
+    <color name="success">#FF10B981</color>
+    <color name="success_bg">#FF06301F</color>
+    <color name="success_fg">#FF6EE7B7</color>
+    <color name="danger">#FFF87171</color>
+    <color name="danger_bg">#FF43161B</color>
+    <color name="danger_fg">#FFFCA5A5</color>
+    <color name="info_bg">#FF13294C</color>
+    <color name="info_fg">#FF93C5FD</color>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_toggle_bg.xml - VoltShare Mobile
+  Fill of a segment in the transfer direction switch. The selected segment
+  takes the soft brand tint so the chosen direction is unmistakable.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/brand_soft" android:state_checked="true" />
+    <item android:color="@color/surface" />
+</selector>

@@ -48,6 +48,9 @@ class BookingListActivity : AppCompatActivity() {
 
         SystemBars.applyInsets(binding.headerBar)
 
+        binding.buttonBack.setOnClickListener { finish() }
+        SystemBars.styleRefreshSpinner(binding.swipeRefresh)
+
         adapter = BookingAdapter { reservation ->
             val intent = Intent(this, BookingDetailActivity::class.java)
             intent.putExtra(BookingDetailActivity.EXTRA_RESERVATION_ID, reservation.id)

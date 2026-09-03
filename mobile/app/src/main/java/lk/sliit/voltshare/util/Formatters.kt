@@ -96,9 +96,9 @@ object Formatters {
      */
     fun distance(metres: Double): String {
         return if (metres < 1000) {
-            "${metres.toInt()} m away"
+            "${metres.toInt()} m"
         } else {
-            String.format(Locale.UK, "%.1f km away", metres / 1000.0)
+            String.format(Locale.UK, "%.1f km", metres / 1000.0)
         }
     }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_toggle_fg.xml - VoltShare Mobile
+  Label of a segment in the transfer direction switch.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/brand_soft_fg" android:state_checked="true" />
+    <item android:color="@color/ink_700" />
+</selector>
