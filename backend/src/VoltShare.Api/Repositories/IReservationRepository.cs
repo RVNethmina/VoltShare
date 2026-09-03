@@ -37,6 +37,14 @@ public class ReservationQuery
     // Exclusive upper bound on the reservation start time.
     public DateTime? ToUtc { get; set; }
 
+    // Bounds on when the transfer was actually finalised, as opposed to when
+    // the booking was due to start. "Completed today" means finished today,
+    // which is a different question from "due today", so it needs its own
+    // range rather than reusing the one above.
+    public DateTime? CompletedFromUtc { get; set; }
+
+    public DateTime? CompletedToUtc { get; set; }
+
     // Free text search across reservation number and prosumer NIC.
     public string? Search { get; set; }
 

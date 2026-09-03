@@ -29,6 +29,7 @@
     <string name="refresh">Refresh</string>
     <string name="search">Search</string>
     <string name="loading">Loading…</string>
+    <string name="verify">Verify</string>
 
     <!-- Dashboard -->
     <string name="greeting_format">Hello, %1$s</string>
@@ -82,4 +83,20 @@
     <string name="confirm_booking">Confirm booking</string>
     <string name="slot_full">Full</string>
     <string name="slot_free_format">%1$d free</string>
+
+    <!-- Profile -->
+    <string name="my_profile">My profile</string>
+    <string name="account_details">Account details</string>
+    <string name="request_deactivation">Request account closure</string>
+    <string name="deactivation_requested_notice">You have asked for this account to be closed. The back-office team will action it; your account stays usable until then.</string>
+    <string name="deactivation_sent">Your closure request has been sent to the back-office team.</string>
+    <string name="profile_saved">Your details have been saved.</string>
+
+    <!-- Operator -->
+    <string name="scan_qr">Scan prosumer QR code</string>
+    <string name="enter_token_manually">Enter token manually</string>
+    <string name="scan_verified">Booking verified</string>
+    <string name="scan_verified_hint">Checked against the VoltShare service.</string>
+    <string name="finalise_transfer">Finalise energy transfer</string>
+    <string name="scan_prompt">Point the camera at the prosumer QR code</string>
 </resources>

@@ -158,6 +158,17 @@
                 android:text="@string/find_stations"
                 app:cornerRadius="10dp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonProfile"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/my_profile"
+                app:cornerRadius="10dp" />
+
             <!-- Next booking -->
             <TextView
                 android:layout_width="wrap_content"

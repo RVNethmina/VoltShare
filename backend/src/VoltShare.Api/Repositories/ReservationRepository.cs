@@ -334,6 +334,16 @@ public class ReservationRepository : IReservationRepository
             filters.Add(Filter.Lt(r => r.ReservationStartUtc, query.ToUtc.Value));
         }
 
+        if (query.CompletedFromUtc.HasValue)
+        {
+            filters.Add(Filter.Gte(r => r.CompletedAtUtc, query.CompletedFromUtc.Value));
+        }
+
+        if (query.CompletedToUtc.HasValue)
+        {
+            filters.Add(Filter.Lt(r => r.CompletedAtUtc, query.CompletedToUtc.Value));
+        }
+
         if (!string.IsNullOrWhiteSpace(query.Search))
         {
             // The term is escaped so characters such as . or * are treated as

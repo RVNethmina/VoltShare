@@ -196,12 +196,38 @@ public class MongoContext
         {
             await Reservations.Indexes.CreateOneAsync(model, cancellationToken: cancellationToken);
         }
-        catch (MongoCommandException ex) when (ex.Code == 85 || ex.CodeName == "IndexOptionsConflict")
+        catch (MongoCommandException ex) when (IsIndexConflict(ex))
         {
-            // Error 85 means an index of this name exists with different
-            // options. Replace it with the corrected definition.
+            // An index of this name already exists with different options, so
+            // it is replaced with the corrected definition.
             await Reservations.Indexes.DropOneAsync(QrTokenIndexName, cancellationToken);
             await Reservations.Indexes.CreateOneAsync(model, cancellationToken: cancellationToken);
         }
+    }
+
+    /// <summary>
+    /// Recognises the "an index of this name already exists with different
+    /// options" failure.
+    ///
+    /// Matching on the numeric code alone was not enough: MongoDB reports this
+    /// as IndexOptionsConflict (85) or IndexKeySpecsConflict (86) depending on
+    /// which part of the definition differs, and the deployment reported
+    /// neither in a form the earlier check recognised, so the rebuild was
+    /// silently skipped. The message is therefore checked as well.
+    /// </summary>
+    private static bool IsIndexConflict(MongoCommandException exception)
+    {
+        if (exception.Code is 85 or 86)
+        {
+            return true;
+        }
+
+        if (exception.CodeName is "IndexOptionsConflict" or "IndexKeySpecsConflict")
+        {
+            return true;
+        }
+
+        return exception.Message.Contains("same name as the requested index",
+            StringComparison.OrdinalIgnoreCase);
     }
 }

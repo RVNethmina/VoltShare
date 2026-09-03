@@ -95,10 +95,17 @@
         <activity
             android:name=".ui.prosumer.BookingSummaryActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.prosumer.ProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <!-- Grid operator screens. -->
         <activity
             android:name=".ui.operator.OperatorHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.operator.ScanResultActivity"
             android:exported="false" />
 
     </application>

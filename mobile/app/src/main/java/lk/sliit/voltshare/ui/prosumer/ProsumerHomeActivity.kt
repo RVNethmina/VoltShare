@@ -64,6 +64,10 @@ class ProsumerHomeActivity : AppCompatActivity() {
             startActivity(Intent(this, BookingListActivity::class.java))
         }
 
+        binding.buttonProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
         binding.buttonFindStations.setOnClickListener {
             startActivity(Intent(this, StationsActivity::class.java))
         }

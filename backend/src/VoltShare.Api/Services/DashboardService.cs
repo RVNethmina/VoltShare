@@ -134,11 +134,15 @@ public class DashboardService : IDashboardService
             FromUtc = now
         }, cancellationToken);
 
+        // Measured on when the transfer was finalised, not on when the booking
+        // was due to start. A booking made for next week but completed early
+        // today still counts as completed today; filtering on the start time
+        // would miss it entirely.
         var completedToday = await _reservations.CountAsync(new ReservationQuery
         {
             Status = ReservationStatus.Completed,
-            FromUtc = startOfDay,
-            ToUtc = startOfNextDay
+            CompletedFromUtc = startOfDay,
+            CompletedToUtc = startOfNextDay
         }, cancellationToken);
 
         // Today's schedule is every booking still open within the current day,

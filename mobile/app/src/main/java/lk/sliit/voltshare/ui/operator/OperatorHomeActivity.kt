@@ -22,12 +22,27 @@ import lk.sliit.voltshare.R
 import lk.sliit.voltshare.data.remote.ApiClient
 import lk.sliit.voltshare.data.remote.ApiException
 import lk.sliit.voltshare.databinding.ActivityOperatorHomeBinding
+import com.journeyapps.barcodescanner.ScanContract
 import lk.sliit.voltshare.ui.LoginActivity
 import lk.sliit.voltshare.util.SystemBars
 
 class OperatorHomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOperatorHomeBinding
+
+    /**
+     * Receives the result of the camera scan. Registered up front, as
+     * the activity result API requires, rather than at the moment of
+     * launching the scanner.
+     */
+    private val scanLauncher = registerForActivityResult(ScanContract()) { result ->
+        val token = result.contents
+
+        // A null result means the operator backed out of the scanner.
+        if (token == null) return@registerForActivityResult
+
+        verifyToken(token)
+    }
 
     /**
      * Builds the screen, labels the tiles and loads the dashboard.
@@ -47,6 +62,16 @@ class OperatorHomeActivity : AppCompatActivity() {
         labelTiles()
 
         binding.buttonSignOut.setOnClickListener { signOut() }
+
+        binding.buttonScan.setOnClickListener {
+            scanLauncher.launch(QrScanHandler.scanOptions(getString(R.string.scan_prompt)))
+        }
+
+        // The emulator has no usable camera, so the same verification
+        // can be reached by typing the token in.
+        binding.buttonEnterToken.setOnClickListener {
+            QrScanHandler.promptForToken(this) { token -> verifyToken(token) }
+        }
         binding.swipeRefresh.setOnRefreshListener { loadDashboard(showSpinner = false) }
 
         // The header would otherwise be drawn underneath the status bar.
@@ -106,6 +131,24 @@ class OperatorHomeActivity : AppCompatActivity() {
                 binding.swipeRefresh.isRefreshing = false
             }
         }
+    }
+
+    /**
+     * Sends a scanned or typed token to the service for checking.
+     */
+    private fun verifyToken(token: String) {
+        QrScanHandler.verifyAndShow(
+            activity = this,
+            token = token,
+            onBusy = { busy ->
+                binding.progress.visibility = if (busy) View.VISIBLE else View.GONE
+                binding.buttonScan.isEnabled = !busy
+            },
+            onError = { message ->
+                binding.textError.text = message
+                binding.textError.visibility = View.VISIBLE
+            }
+        )
     }
 
     /**
