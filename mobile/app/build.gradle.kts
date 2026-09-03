@@ -51,7 +51,7 @@ android {
         // it is running on; inside the emulator, "localhost" would mean the
         // emulator itself. Change this to the machine's network address, for
         // example http://192.168.1.190:8080/api/v1/, to run on a real handset.
-        buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:8080/api/v1/\"")
+        buildConfigField("String", "API_BASE_URL", "\"http://192.168.1.190:8080/api/v1/\"")
     }
 
     buildFeatures {
