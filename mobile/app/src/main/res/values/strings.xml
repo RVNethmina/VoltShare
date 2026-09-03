@@ -45,4 +45,10 @@
     <string name="tile_completed_today_hint">Transfers finalised today</string>
     <string name="tile_active_nodes">Active nodes</string>
     <string name="tile_active_nodes_hint">Microgrid stations in service</string>
+
+    <!-- Stations and map -->
+    <string name="nearby_nodes">Nearby nodes</string>
+    <string name="view_map">Map</string>
+    <string name="no_stations">No microgrid nodes were found.</string>
+    <string name="find_stations">Find nodes</string>
 </resources>

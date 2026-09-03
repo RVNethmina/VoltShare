@@ -126,6 +126,16 @@
                     android:layout_weight="1" />
             </LinearLayout>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonFindStations"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/find_stations"
+                app:cornerRadius="10dp" />
+
             <!-- Next booking -->
             <TextView
                 android:layout_width="wrap_content"

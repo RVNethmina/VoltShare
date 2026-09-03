@@ -55,6 +55,10 @@ class ProsumerHomeActivity : AppCompatActivity() {
         labelTiles()
 
         binding.buttonSignOut.setOnClickListener { signOut() }
+
+        binding.buttonFindStations.setOnClickListener {
+            startActivity(Intent(this, StationsActivity::class.java))
+        }
         binding.swipeRefresh.setOnRefreshListener { loadDashboard(showSpinner = false) }
 
         // The header would otherwise be drawn underneath the status bar.
