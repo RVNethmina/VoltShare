@@ -1,9 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  themes.xml - VoltShare Mobile
+  Applies the brand palette to the Material 3 components so the buttons and
+  inputs across the application pick it up without being styled one by one.
+-->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.Voltshare" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/brand_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/brand_100</item>
+        <item name="colorOnPrimaryContainer">@color/brand_700</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/ink_900</item>
+        <item name="android:colorBackground">@color/ink_100</item>
+        <item name="colorError">@color/danger</item>
     </style>
 
     <style name="Theme.Voltshare" parent="Base.Theme.Voltshare" />
+
+    <!-- Reusable text styles -->
+    <style name="TextPageTitle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/ink_900</item>
+    </style>
+
+    <style name="TextSectionTitle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/ink_900</item>
+    </style>
+
+    <style name="TextLabel">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/ink_500</item>
+    </style>
+
+    <style name="TextBody">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/ink_700</item>
+    </style>
 </resources>

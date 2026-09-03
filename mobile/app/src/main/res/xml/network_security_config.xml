@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  network_security_config.xml - VoltShare Mobile
+
+  From Android 9 onwards, plain HTTP traffic is blocked by default and a
+  request to an http:// address fails with a cleartext error that gives no
+  clue as to why. The VoltShare Web API is hosted on IIS over HTTP on the
+  local network, so the specific addresses it is reached by are listed here as
+  exceptions.
+
+  Only these hosts are permitted; every other address must still use HTTPS,
+  so the exception is as narrow as it can be while letting the application
+  reach the service during development and for the demonstration.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- The alias the Android emulator uses to reach the machine hosting
+             it. Inside the emulator, localhost means the emulator itself. -->
+        <domain includeSubdomains="false">10.0.2.2</domain>
+
+        <!-- The development machine's address on the local network, used when
+             the application runs on a physical handset. -->
+        <domain includeSubdomains="false">192.168.1.190</domain>
+
+        <!-- Loopback, for a service reached through a port forward. -->
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">127.0.0.1</domain>
+    </domain-config>
+</network-security-config>

@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  colors.xml - VoltShare Mobile
+  Shared palette. Amber stands for solar generation and emerald for energy
+  delivered, matching the web application so the two clients look like one
+  system.
+-->
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Brand -->
+    <color name="brand_500">#F59E0B</color>
+    <color name="brand_600">#D97706</color>
+    <color name="brand_700">#B45309</color>
+    <color name="brand_100">#FEF3C7</color>
+
+    <!-- Neutrals -->
+    <color name="ink_900">#0F172A</color>
+    <color name="ink_800">#1E293B</color>
+    <color name="ink_700">#334155</color>
+    <color name="ink_500">#64748B</color>
+    <color name="ink_400">#94A3B8</color>
+    <color name="ink_200">#E2E8F0</color>
+    <color name="ink_100">#F1F5F9</color>
+    <color name="ink_50">#F8FAFC</color>
+
+    <!-- Reservation status colours, matching the web application -->
+    <color name="status_pending_bg">#FEF3C7</color>
+    <color name="status_pending_fg">#92400E</color>
+    <color name="status_approved_bg">#DBEAFE</color>
+    <color name="status_approved_fg">#1E40AF</color>
+    <color name="status_completed_bg">#D1FAE5</color>
+    <color name="status_completed_fg">#065F46</color>
+    <color name="status_cancelled_bg">#E2E8F0</color>
+    <color name="status_cancelled_fg">#334155</color>
+    <color name="status_rejected_bg">#FEE2E2</color>
+    <color name="status_rejected_fg">#991B1B</color>
+
+    <color name="success">#059669</color>
+    <color name="danger">#DC2626</color>
 </resources>

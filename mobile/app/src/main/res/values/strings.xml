@@ -1,3 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  strings.xml - VoltShare Mobile
+  All user visible text, kept out of the layouts and the Kotlin code so it can
+  be reviewed and translated in one place.
+-->
 <resources>
-    <string name="app_name">Voltshare</string>
+    <string name="app_name">VoltShare</string>
+    <string name="app_tagline">Smart Solar Microgrid Trading</string>
+
+    <!-- Authentication -->
+    <string name="sign_in">Sign in</string>
+    <string name="sign_out">Sign out</string>
+    <string name="email">Email address</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create an account</string>
+    <string name="register">Register</string>
+    <string name="nic">NIC number</string>
+    <string name="full_name">Full name</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="no_account_prompt">New prosumer? Create an account</string>
+    <string name="have_account_prompt">Already registered? Sign in</string>
+
+    <!-- Common -->
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="refresh">Refresh</string>
+    <string name="search">Search</string>
+    <string name="loading">Loading…</string>
+
+    <!-- Dashboard -->
+    <string name="greeting_format">Hello, %1$s</string>
+    <string name="nic_format">NIC %1$s</string>
+    <string name="tile_awaiting_approval">Awaiting approval</string>
+    <string name="tile_awaiting_approval_hint">Bookings needing a decision</string>
+    <string name="tile_approved_upcoming">Approved upcoming</string>
+    <string name="tile_approved_upcoming_hint">Confirmed future transfers</string>
+    <string name="tile_completed">Completed</string>
+    <string name="tile_completed_hint">Energy transfers finished</string>
+    <string name="tile_cancelled">Cancelled</string>
+    <string name="tile_cancelled_hint">Bookings you withdrew</string>
+    <string name="tile_completed_today">Completed today</string>
+    <string name="tile_completed_today_hint">Transfers finalised today</string>
+    <string name="tile_active_nodes">Active nodes</string>
+    <string name="tile_active_nodes_hint">Microgrid stations in service</string>
 </resources>
