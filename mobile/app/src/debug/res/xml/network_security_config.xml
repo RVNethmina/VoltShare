@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  network_security_config.xml (debug) - VoltShare Mobile
+
+  This file replaces the one in src/main for debug builds only. Android merges
+  resources per build variant, and a file of the same name in the variant's
+  source set takes precedence over the one in main.
+
+  Why it exists: the address of the Web API is now read from local.properties,
+  so each member of the team builds against their own machine. The list of
+  permitted cleartext hosts in src/main cannot know those addresses, and an
+  address missing from it fails at runtime with a cleartext error that gives no
+  hint as to the cause. Permitting cleartext generally in the debug build
+  removes that trap.
+
+  The release build is unaffected: it still uses the narrow list in
+  src/main/res/xml, so the shipped application only ever sends plain HTTP to
+  the addresses named there.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

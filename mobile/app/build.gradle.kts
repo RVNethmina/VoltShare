@@ -27,6 +27,22 @@ if (localPropertiesFile.exists()) {
 }
 val mapsApiKey: String = localProperties.getProperty("MAPS_API_KEY") ?: ""
 
+// Address of the VoltShare Web API, read from the same untracked file.
+//
+// Every member of the team hosts the service on their own machine, and a home
+// router hands out a different address to each of them, so the address cannot
+// be committed. Each developer sets API_BASE_URL in their own
+// local.properties; the fallback below is the emulator alias, which works on
+// any machine without configuration.
+//
+// 10.0.2.2 is the address the Android emulator maps to the machine hosting it.
+// Inside the emulator "localhost" means the emulator itself, so a real handset
+// needs the machine's network address instead, for example
+// http://192.168.1.190:8080/api/v1/ - note the trailing slash, which Retrofit
+// requires of a base address.
+val apiBaseUrl: String =
+    localProperties.getProperty("API_BASE_URL") ?: "http://10.0.2.2:8080/api/v1/"
+
 android {
     namespace = "lk.sliit.voltshare"
     compileSdk {
@@ -45,13 +61,10 @@ android {
         // Substituted into AndroidManifest.xml at build time.
         manifestPlaceholders["MAPS_API_KEY"] = mapsApiKey
 
-        // Address of the VoltShare Web API.
-        //
-        // 10.0.2.2 is the alias the Android emulator uses to reach the machine
-        // it is running on; inside the emulator, "localhost" would mean the
-        // emulator itself. Change this to the machine's network address, for
-        // example http://192.168.1.190:8080/api/v1/, to run on a real handset.
-        buildConfigField("String", "API_BASE_URL", "\"http://192.168.1.190:8080/api/v1/\"")
+        // Exposed to the application as BuildConfig.API_BASE_URL, which is
+        // where ApiClient points Retrofit. Resolved above from
+        // local.properties, so the address is never committed.
+        buildConfigField("String", "API_BASE_URL", "\"$apiBaseUrl\"")
     }
 
     buildFeatures {
