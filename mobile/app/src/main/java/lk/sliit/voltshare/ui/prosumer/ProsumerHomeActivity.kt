@@ -56,6 +56,14 @@ class ProsumerHomeActivity : AppCompatActivity() {
 
         binding.buttonSignOut.setOnClickListener { signOut() }
 
+        binding.buttonBookEnergy.setOnClickListener {
+            startActivity(Intent(this, CreateBookingActivity::class.java))
+        }
+
+        binding.buttonMyBookings.setOnClickListener {
+            startActivity(Intent(this, BookingListActivity::class.java))
+        }
+
         binding.buttonFindStations.setOnClickListener {
             startActivity(Intent(this, StationsActivity::class.java))
         }

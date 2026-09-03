@@ -14,10 +14,25 @@
 package lk.sliit.voltshare.util
 
 import android.view.View
+import android.view.Window
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 
 object SystemBars {
+
+    /**
+     * Chooses dark or light icons for the status bar.
+     *
+     * The clock and indicators are drawn by the system over whatever the app
+     * puts at the top of the screen. Screens with a dark header need the light
+     * icons; a screen that is light at the top needs dark ones, or the clock is
+     * white on a pale background and cannot be read.
+     */
+    fun useDarkStatusBarIcons(window: Window, useDark: Boolean) {
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightStatusBars = useDark
+    }
 
     /**
      * Adds the height of the status bar to the top padding of a view, and the

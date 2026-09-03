@@ -51,4 +51,35 @@
     <string name="view_map">Map</string>
     <string name="no_stations">No microgrid nodes were found.</string>
     <string name="find_stations">Find nodes</string>
+
+    <!-- Bookings -->
+    <string name="my_bookings">My bookings</string>
+    <string name="search_bookings">Search by reference or station</string>
+    <string name="no_bookings">No bookings match this filter.</string>
+    <string name="filter_all">All</string>
+    <string name="filter_pending">Pending</string>
+    <string name="filter_approved">Approved</string>
+    <string name="filter_completed">Completed</string>
+    <string name="filter_cancelled">Cancelled</string>
+    <string name="booking_details">Booking details</string>
+    <string name="transaction_qr">Transaction QR code</string>
+    <string name="transaction_qr_hint">Show this to the grid operator at the station.</string>
+    <string name="modify_booking">Change window</string>
+    <string name="cancel_booking">Cancel booking</string>
+    <string name="view_booking">View booking</string>
+    <string name="done">Done</string>
+    <string name="book_energy">Book energy transfer</string>
+    <string name="book_energy_hint">Bookings can be made up to 7 days ahead.</string>
+    <string name="change_booking">Change booking</string>
+    <string name="save_changes">Save changes</string>
+    <string name="choose_node">Choose a node</string>
+    <string name="station">Station</string>
+    <string name="transfer_direction">Transfer direction</string>
+    <string name="type_injection">Deliver energy</string>
+    <string name="type_withdrawal">Draw energy</string>
+    <string name="choose_window">Choose a window</string>
+    <string name="no_slots">This node has no bookable windows.</string>
+    <string name="confirm_booking">Confirm booking</string>
+    <string name="slot_full">Full</string>
+    <string name="slot_free_format">%1$d free</string>
 </resources>

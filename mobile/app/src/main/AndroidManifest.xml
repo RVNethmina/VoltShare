@@ -82,6 +82,20 @@
             android:name=".ui.prosumer.StationMapActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.prosumer.BookingListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.prosumer.BookingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.prosumer.CreateBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.prosumer.BookingSummaryActivity"
+            android:exported="false" />
+
         <!-- Grid operator screens. -->
         <activity
             android:name=".ui.operator.OperatorHomeActivity"
