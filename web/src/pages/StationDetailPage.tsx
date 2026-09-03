@@ -273,8 +273,8 @@ export default function StationDetailPage() {
                       <span
                         className={`badge ${
                           slot.remainingCapacity === 0
-                            ? 'bg-red-100 text-red-800'
-                            : 'bg-emerald-100 text-emerald-800'
+                            ? 'bg-danger-bg text-danger-fg'
+                            : 'bg-success-bg text-success-fg'
                         }`}
                       >
                         {slot.remainingCapacity === 0 ? 'Full' : `${slot.remainingCapacity} free`}
@@ -378,7 +378,7 @@ export default function StationDetailPage() {
                 type="checkbox"
                 checked={form.isActive}
                 onChange={(e) => setForm({ ...form, isActive: e.target.checked })}
-                className="h-4 w-4 rounded border-ink-300"
+                className="h-4 w-4 rounded border-line-strong"
               />
               Window is open for booking
             </label>

@@ -153,11 +153,7 @@ export default function UsersPage() {
                 key={value || 'all'}
                 type="button"
                 onClick={() => setRoleFilter(value)}
-                className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${
-                  roleFilter === value
-                    ? 'bg-brand-500 font-medium text-white'
-                    : 'bg-ink-100 text-ink-600 hover:bg-ink-200'
-                }`}
+                className={`chip ${roleFilter === value ? 'chip-active' : ''}`}
               >
                 {label}
               </button>
@@ -178,7 +174,40 @@ export default function UsersPage() {
         ) : users.length === 0 ? (
           <EmptyState title="No system users found" hint="Add a back-office officer or operator." />
         ) : (
-          <div className="table-wrap">
+          <>
+            <ul className="divide-y divide-line md:hidden">
+              {users.map((u) => (
+                <li key={u.id} className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="font-medium text-ink-900">
+                        {u.fullName}
+                        {u.id === currentUser?.id && (
+                          <span className="ml-2 text-xs font-normal text-ink-400">(you)</span>
+                        )}
+                      </p>
+                      <p className="text-xs text-ink-500">{u.email}</p>
+                    </div>
+                    <ActiveBadge isActive={u.isActive} />
+                  </div>
+
+                  <div className="mt-3 flex flex-wrap items-center gap-2">
+                    <RoleBadge role={u.role} />
+                    {u.id !== currentUser?.id && (
+                      <button
+                        type="button"
+                        onClick={() => void handleToggleActive(u)}
+                        className={u.isActive ? 'btn-danger btn-sm' : 'btn-success btn-sm'}
+                      >
+                        {u.isActive ? 'Deactivate' : 'Activate'}
+                      </button>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+          <div className="table-wrap hidden md:block">
             <table className="table">
               <thead>
                 <tr>
@@ -225,6 +254,7 @@ export default function UsersPage() {
               </tbody>
             </table>
           </div>
+          </>
         )}
       </div>
 

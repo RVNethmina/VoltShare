@@ -204,7 +204,65 @@ export default function StationsPage() {
             hint={search ? 'Try a different search term.' : 'Register the first node to begin.'}
           />
         ) : (
-          <div className="table-wrap">
+          <>
+            {/* On a phone the eight column table forces the node name and
+                address to wrap badly, so each node becomes its own card. */}
+            <ul className="divide-y divide-line md:hidden">
+              {stations.map((station) => (
+                <li key={station.id} className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <Link
+                        to={`/stations/${station.id}`}
+                        className="font-medium text-ink-900 hover:text-brand-600"
+                      >
+                        {station.name}
+                      </Link>
+                      <p className="text-xs text-ink-400">
+                        {station.code} · {station.addressLine}, {station.city}
+                      </p>
+                    </div>
+                    <ActiveBadge isActive={station.isActive} />
+                  </div>
+
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-500">
+                    <span>{station.capacityKwh} kWh</span>
+                    <span>
+                      Battery {station.availableBatterySlots} / {station.totalBatterySlots}
+                    </span>
+                    <span>
+                      {station.operatingHours.openTime}–{station.operatingHours.closeTime}
+                    </span>
+                  </div>
+
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <Link to={`/stations/${station.id}`} className="btn-secondary btn-sm">
+                      Slots
+                    </Link>
+                    {isBackoffice && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => openEdit(station)}
+                          className="btn-secondary btn-sm"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => void handleToggleActive(station)}
+                          className={station.isActive ? 'btn-danger btn-sm' : 'btn-success btn-sm'}
+                        >
+                          {station.isActive ? 'Deactivate' : 'Activate'}
+                        </button>
+                      </>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+          <div className="table-wrap hidden md:block">
             <table className="table">
               <thead>
                 <tr>
@@ -238,7 +296,7 @@ export default function StationsPage() {
                           max={station.totalBatterySlots}
                           defaultValue={station.availableBatterySlots}
                           onBlur={(e) => void handleBatteryChange(station, e.target.value)}
-                          className="w-16 rounded border border-ink-300 px-2 py-1 text-sm"
+                          className="w-16 rounded border border-line-strong px-2 py-1 text-sm"
                           title="Battery slots currently free"
                         />
                         <span className="text-xs text-ink-400">/ {station.totalBatterySlots}</span>
@@ -281,6 +339,7 @@ export default function StationsPage() {
               </tbody>
             </table>
           </div>
+          </>
         )}
       </div>
 

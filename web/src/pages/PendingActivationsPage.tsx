@@ -117,7 +117,7 @@ export default function PendingActivationsPage() {
                   These prosumers registered on the mobile app and cannot sign in yet.
                 </p>
               </div>
-              <span className="badge bg-amber-100 text-amber-800">{pending.length} waiting</span>
+              <span className="badge bg-warn-bg text-warn-fg">{pending.length} waiting</span>
             </div>
 
             {pending.length === 0 ? (
@@ -175,7 +175,7 @@ export default function PendingActivationsPage() {
                   a back-office officer acts.
                 </p>
               </div>
-              <span className="badge bg-ink-200 text-ink-700">{closureRequests.length} open</span>
+              <span className="badge bg-neutral-bg text-neutral-fg">{closureRequests.length} open</span>
             </div>
 
             {closureRequests.length === 0 ? (

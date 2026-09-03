@@ -67,8 +67,21 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-full items-center justify-center bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 p-4">
-      <div className="w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-2xl lg:grid lg:grid-cols-2">
+    // The backdrop is deliberately fixed rather than drawn from the neutral
+    // ramp: that ramp inverts with the theme, so an "ink-900" backdrop would
+    // turn near white in dark mode. The rail colour is dark in both themes.
+    <div className="relative flex min-h-full items-center justify-center overflow-hidden bg-rail p-4">
+      {/* Soft brand glow, purely decorative. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-brand-500/20 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-brand-700/20 blur-3xl"
+      />
+
+      <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl lg:grid lg:grid-cols-2">
         {/* Brand panel, hidden on small screens where the form matters more. */}
         <div className="hidden bg-gradient-to-br from-brand-500 to-brand-700 p-10 text-white lg:flex lg:flex-col lg:justify-between">
           <div>

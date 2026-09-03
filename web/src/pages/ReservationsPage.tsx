@@ -134,11 +134,7 @@ export default function ReservationsPage() {
                 key={status || 'all'}
                 type="button"
                 onClick={() => setFilters({ ...filters, status })}
-                className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${
-                  filters.status === status
-                    ? 'bg-brand-500 font-medium text-white'
-                    : 'bg-ink-100 text-ink-600 hover:bg-ink-200'
-                }`}
+                className={`chip ${filters.status === status ? 'chip-active' : ''}`}
               >
                 {status || 'All'}
               </button>
@@ -185,7 +181,86 @@ export default function ReservationsPage() {
             hint="Try clearing the status filter or the search term."
           />
         ) : (
-          <div className="table-wrap">
+          <>
+            {/* Below the medium breakpoint the table is replaced with a list of
+                cards. Squeezing eight columns onto a phone forces the station
+                name to wrap over several lines and makes the whole row hard to
+                read, so each booking gets its own block instead. */}
+            <ul className="divide-y divide-line md:hidden">
+              {reservations.map((r) => (
+                <li key={r.id} className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <Link
+                      to={`/reservations/${r.id}`}
+                      className="font-medium text-ink-900 hover:text-brand-600"
+                    >
+                      {r.reservationNo}
+                    </Link>
+                    <StatusBadge status={r.status} />
+                  </div>
+
+                  <p className="mt-1 text-sm text-ink-700">{r.stationName ?? '—'}</p>
+                  <p className="text-xs text-ink-400">
+                    {r.prosumerName ?? '—'} · {r.prosumerNic}
+                  </p>
+
+                  <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-ink-500">
+                    <span>{formatDateTime(r.reservationStartUtc)}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{r.energyKwh} kWh</span>
+                    <span
+                      className={`badge ${
+                        r.type === 'Injection'
+                          ? 'bg-success-bg text-success-fg'
+                          : 'bg-info-bg text-info-fg'
+                      }`}
+                    >
+                      {r.type}
+                    </span>
+                  </div>
+
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {r.status === 'Pending' && (
+                      <>
+                        <button
+                          type="button"
+                          disabled={busyId === r.id}
+                          onClick={() => void runAction(r, 'approve')}
+                          className="btn-success btn-sm"
+                        >
+                          Approve
+                        </button>
+                        <button
+                          type="button"
+                          disabled={busyId === r.id}
+                          onClick={() => void runAction(r, 'reject')}
+                          className="btn-secondary btn-sm"
+                        >
+                          Reject
+                        </button>
+                      </>
+                    )}
+
+                    {r.canBeCancelled && (
+                      <button
+                        type="button"
+                        disabled={busyId === r.id}
+                        onClick={() => void runAction(r, 'cancel')}
+                        className="btn-danger btn-sm"
+                      >
+                        Cancel
+                      </button>
+                    )}
+
+                    <Link to={`/reservations/${r.id}`} className="btn-secondary btn-sm">
+                      View
+                    </Link>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="table-wrap hidden md:block">
             <table className="table">
               <thead>
                 <tr>
@@ -217,8 +292,8 @@ export default function ReservationsPage() {
                       <span
                         className={`badge ${
                           r.type === 'Injection'
-                            ? 'bg-emerald-100 text-emerald-800'
-                            : 'bg-sky-100 text-sky-800'
+                            ? 'bg-success-bg text-success-fg'
+                            : 'bg-info-bg text-info-fg'
                         }`}
                       >
                         {r.type}
@@ -273,7 +348,8 @@ export default function ReservationsPage() {
                 ))}
               </tbody>
             </table>
-          </div>
+            </div>
+          </>
         )}
       </div>
     </>

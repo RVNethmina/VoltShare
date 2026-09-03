@@ -19,11 +19,11 @@ import type { ReservationStatus, UserRole } from '../types'
 // Each reservation status gets its own colour so a long list can be scanned at
 // a glance rather than read word by word.
 const RESERVATION_STATUS_STYLES: Record<ReservationStatus, string> = {
-  Pending: 'bg-amber-100 text-amber-800',
-  Approved: 'bg-blue-100 text-blue-800',
-  Completed: 'bg-emerald-100 text-emerald-800',
-  Cancelled: 'bg-ink-200 text-ink-700',
-  Rejected: 'bg-red-100 text-red-800',
+  Pending: 'bg-warn-bg text-warn-fg',
+  Approved: 'bg-info-bg text-info-fg',
+  Completed: 'bg-success-bg text-success-fg',
+  Cancelled: 'bg-neutral-bg text-neutral-fg',
+  Rejected: 'bg-danger-bg text-danger-fg',
 }
 
 /** Coloured label for a reservation status. */
@@ -32,9 +32,9 @@ export function StatusBadge({ status }: { status: ReservationStatus }) {
 }
 
 const ROLE_STYLES: Record<UserRole, string> = {
-  Backoffice: 'bg-purple-100 text-purple-800',
-  GridOperator: 'bg-sky-100 text-sky-800',
-  Prosumer: 'bg-emerald-100 text-emerald-800',
+  Backoffice: 'bg-accent-bg text-accent-fg',
+  GridOperator: 'bg-info-bg text-info-fg',
+  Prosumer: 'bg-success-bg text-success-fg',
 }
 
 /** Coloured label for a user role. */
@@ -47,7 +47,7 @@ export function RoleBadge({ role }: { role: UserRole }) {
 /** Green or grey label showing whether an account or station is active. */
 export function ActiveBadge({ isActive }: { isActive: boolean }) {
   return (
-    <span className={`badge ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-ink-200 text-ink-600'}`}>
+    <span className={`badge ${isActive ? 'bg-success-bg text-success-fg' : 'bg-neutral-bg text-neutral-fg'}`}>
       {isActive ? 'Active' : 'Inactive'}
     </span>
   )
@@ -81,8 +81,8 @@ export function PageHeader({
 /** Placeholder shown while a request is in flight. */
 export function Loading({ label = 'Loading…' }: { label?: string }) {
   return (
-    <div className="flex items-center justify-center gap-3 py-12 text-sm text-ink-500">
-      <span className="h-4 w-4 animate-spin rounded-full border-2 border-ink-300 border-t-brand-500" />
+    <div className="flex items-center justify-center gap-3 py-16 text-sm text-ink-500">
+      <span className="h-4 w-4 animate-spin rounded-full border-2 border-ink-300 border-t-brand-500" aria-hidden="true" />
       {label}
     </div>
   )
@@ -111,10 +111,12 @@ export function Alert({
   message: string
   onDismiss?: () => void
 }) {
+  // Each banner uses the same status pair as the badges, so a failure looks
+  // the same wherever it is reported and both themes are covered at once.
   const styles = {
-    error: 'bg-red-50 text-red-800 border-red-200',
-    success: 'bg-emerald-50 text-emerald-800 border-emerald-200',
-    info: 'bg-blue-50 text-blue-800 border-blue-200',
+    error: 'bg-danger-bg text-danger-fg border-danger-fg/20',
+    success: 'bg-success-bg text-success-fg border-success-fg/20',
+    info: 'bg-info-bg text-info-fg border-info-fg/20',
   }[kind]
 
   return (
@@ -164,7 +166,7 @@ export function Modal({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink-900/40 p-4 sm:p-8">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/50 p-4 backdrop-blur-[2px] sm:p-8">
       <div className="card w-full max-w-2xl">
         <div className="card-header">
           <h2 className="card-title">{title}</h2>
@@ -172,7 +174,7 @@ export function Modal({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="rounded p-1 text-ink-400 hover:bg-ink-100 hover:text-ink-700"
+            className="rounded-md p-1.5 text-ink-400 transition-colors hover:bg-ink-100 hover:text-ink-800"
           >
             ✕
           </button>
@@ -181,7 +183,7 @@ export function Modal({
         <div className="px-5 py-4">{children}</div>
 
         {footer && (
-          <div className="flex justify-end gap-2 border-t border-ink-200 px-5 py-4">{footer}</div>
+          <div className="flex justify-end gap-2 border-t border-line px-5 py-4">{footer}</div>
         )}
       </div>
     </div>

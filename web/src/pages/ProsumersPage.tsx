@@ -153,11 +153,7 @@ export default function ProsumersPage() {
                 key={value}
                 type="button"
                 onClick={() => setActiveFilter(value)}
-                className={`rounded-lg px-3 py-1.5 text-sm capitalize transition-colors ${
-                  activeFilter === value
-                    ? 'bg-brand-500 font-medium text-white'
-                    : 'bg-ink-100 text-ink-600 hover:bg-ink-200'
-                }`}
+                className={`chip capitalize ${activeFilter === value ? 'chip-active' : ''}`}
               >
                 {value}
               </button>
@@ -178,7 +174,40 @@ export default function ProsumersPage() {
         ) : prosumers.length === 0 ? (
           <EmptyState title="No prosumers found" hint="Try a different filter or search term." />
         ) : (
-          <div className="table-wrap">
+          <>
+            <ul className="divide-y divide-line md:hidden">
+              {prosumers.map((prosumer) => (
+                <li key={prosumer.id} className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="font-medium text-ink-900">{prosumer.fullName}</p>
+                      <p className="font-mono text-xs text-ink-400">{prosumer.id}</p>
+                    </div>
+                    <div className="flex shrink-0 flex-col items-end gap-1">
+                      <ActiveBadge isActive={prosumer.isActive} />
+                      {prosumer.deactivationRequested && (
+                        <span className="badge bg-warn-bg text-warn-fg">Closure requested</span>
+                      )}
+                    </div>
+                  </div>
+
+                  <p className="mt-2 text-xs text-ink-500">{prosumer.email}</p>
+                  <p className="text-xs text-ink-400">{prosumer.phone ?? '—'}</p>
+
+                  {isBackoffice && (
+                    <button
+                      type="button"
+                      onClick={() => void handleToggleActive(prosumer)}
+                      className={`mt-3 ${prosumer.isActive ? 'btn-danger btn-sm' : 'btn-success btn-sm'}`}
+                    >
+                      {prosumer.isActive ? 'Deactivate' : 'Activate'}
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+          <div className="table-wrap hidden md:block">
             <table className="table">
               <thead>
                 <tr>
@@ -204,7 +233,7 @@ export default function ProsumersPage() {
                       <div className="flex flex-wrap gap-1">
                         <ActiveBadge isActive={p.isActive} />
                         {p.deactivationRequested && (
-                          <span className="badge bg-amber-100 text-amber-800">
+                          <span className="badge bg-warn-bg text-warn-fg">
                             Closure requested
                           </span>
                         )}
@@ -228,6 +257,7 @@ export default function ProsumersPage() {
               </tbody>
             </table>
           </div>
+          </>
         )}
       </div>
 
@@ -315,7 +345,7 @@ export default function ProsumersPage() {
               type="checkbox"
               checked={form.activateImmediately}
               onChange={(e) => setForm({ ...form, activateImmediately: e.target.checked })}
-              className="h-4 w-4 rounded border-ink-300"
+              className="h-4 w-4 rounded border-line-strong"
             />
             Activate straight away
           </label>

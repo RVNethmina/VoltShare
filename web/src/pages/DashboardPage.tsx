@@ -37,10 +37,10 @@ function StatTile({
   tone: 'amber' | 'blue' | 'emerald' | 'slate'
 }) {
   const tones = {
-    amber: 'bg-amber-50 text-amber-700 border-amber-200',
-    blue: 'bg-blue-50 text-blue-700 border-blue-200',
-    emerald: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    slate: 'bg-ink-50 text-ink-700 border-ink-200',
+    amber: 'bg-warn-bg text-warn-fg border-warn-fg/20',
+    blue: 'bg-info-bg text-info-fg border-info-fg/20',
+    emerald: 'bg-success-bg text-success-fg border-success-fg/20',
+    slate: 'bg-surface-2 text-ink-700 border-line',
   }[tone]
 
   return (

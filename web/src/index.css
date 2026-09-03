@@ -1,118 +1,362 @@
 /* -----------------------------------------------------------------------------
    File        : index.css
    Project     : VoltShare Web - Smart Solar Microgrid Trading System
-   Description : Global styling. Loads Tailwind CSS 4 and defines the shared
-                 design tokens and the handful of component classes that are
-                 reused across every screen.
+   Description : Global styling and the light and dark themes.
+
+                 Colours are declared once as CSS variables and mapped onto
+                 Tailwind utilities. The "ink" scale is deliberately semantic
+                 rather than literal: ink-50 always means the subtlest surface
+                 and ink-900 always means the strongest text, so the same
+                 markup reads correctly in both themes and the whole palette
+                 inverts by swapping one class on the html element.
    Author      : <IT Number - Member Name>
    Created     : 2026-09-03
    ----------------------------------------------------------------------------- */
 
 @import "tailwindcss";
 
-/* Design tokens. Amber stands for solar generation and emerald for energy
-   delivered, which keeps the colour language consistent across the app. */
-@theme {
-  --color-brand-50: #fffbeb;
-  --color-brand-100: #fef3c7;
-  --color-brand-200: #fde68a;
-  --color-brand-400: #fbbf24;
-  --color-brand-500: #f59e0b;
-  --color-brand-600: #d97706;
-  --color-brand-700: #b45309;
+/* Dark mode is driven by a class rather than the media query alone, so the
+   user's own choice can override what their operating system reports. */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --color-ink-50: #f8fafc;
-  --color-ink-100: #f1f5f9;
-  --color-ink-200: #e2e8f0;
-  --color-ink-300: #cbd5e1;
-  --color-ink-400: #94a3b8;
-  --color-ink-500: #64748b;
-  --color-ink-600: #475569;
-  --color-ink-700: #334155;
-  --color-ink-800: #1e293b;
-  --color-ink-900: #0f172a;
+/* ---------------------------------------------------------------------------
+   Light theme (default)
+   --------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  /* Semantic neutral ramp: 50 is furthest from the text, 900 is the text. */
+  --c-ink-50: #f8fafc;
+  --c-ink-100: #f1f5f9;
+  --c-ink-200: #e2e8f0;
+  --c-ink-300: #cbd5e1;
+  --c-ink-400: #94a3b8;
+  --c-ink-500: #64748b;
+  --c-ink-600: #475569;
+  --c-ink-700: #334155;
+  --c-ink-800: #1e293b;
+  --c-ink-900: #0f172a;
+
+  /* Panels and page background */
+  --c-canvas: #f1f5f9;
+  --c-surface: #ffffff;
+  --c-surface-2: #f8fafc;
+  --c-border: #e2e8f0;
+  --c-border-strong: #cbd5e1;
+
+  /* Navigation rail, which stays dark in both themes for brand consistency */
+  --c-rail: #0f172a;
+  --c-rail-fg: #e2e8f0;
+  --c-rail-muted: #94a3b8;
+  --c-rail-hover: #1e293b;
+
+  /* Brand: amber, for solar generation */
+  --c-brand-50: #fffbeb;
+  --c-brand-100: #fef3c7;
+  --c-brand-400: #fbbf24;
+  --c-brand-500: #f59e0b;
+  --c-brand-600: #d97706;
+  --c-brand-700: #b45309;
+  --c-brand-fg: #ffffff;
+  --c-brand-soft: #fef3c7;
+  --c-brand-soft-fg: #92400e;
+
+  /* Status pairs */
+  --c-success-bg: #d1fae5;
+  --c-success-fg: #065f46;
+  --c-warn-bg: #fef3c7;
+  --c-warn-fg: #92400e;
+  --c-info-bg: #dbeafe;
+  --c-info-fg: #1e40af;
+  --c-danger-bg: #fee2e2;
+  --c-danger-fg: #991b1b;
+  --c-neutral-bg: #e2e8f0;
+  --c-neutral-fg: #334155;
+  --c-accent-bg: #ede9fe;
+  --c-accent-fg: #5b21b6;
+
+  --c-danger: #dc2626;
+  --c-success: #059669;
+
+  /* Text drawn on top of those solid fills. */
+  --c-danger-on: #ffffff;
+  --c-success-on: #ffffff;
+
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.06), 0 1px 3px rgb(15 23 42 / 0.04);
+  --shadow-raised: 0 4px 12px rgb(15 23 42 / 0.08), 0 2px 4px rgb(15 23 42 / 0.04);
+  --shadow-overlay: 0 20px 50px rgb(15 23 42 / 0.25);
 }
 
+/* ---------------------------------------------------------------------------
+   Dark theme
+   The neutral ramp is inverted so ink-900 remains the text colour and ink-50
+   remains the quietest surface. Surfaces are lifted rather than pure black,
+   which keeps large panels comfortable to read for long periods.
+   --------------------------------------------------------------------------- */
+.dark {
+  color-scheme: dark;
+
+  --c-ink-50: #0f1729;
+  --c-ink-100: #16203a;
+  --c-ink-200: #1e2b47;
+  --c-ink-300: #334565;
+  --c-ink-400: #64748b;
+  --c-ink-500: #94a3b8;
+  --c-ink-600: #cbd5e1;
+  --c-ink-700: #dde5ef;
+  --c-ink-800: #eef2f7;
+  --c-ink-900: #f8fafc;
+
+  --c-canvas: #0a1120;
+  --c-surface: #111c33;
+  --c-surface-2: #16203a;
+  --c-border: #1e2b47;
+  --c-border-strong: #334565;
+
+  --c-rail: #080e1b;
+  --c-rail-fg: #dde5ef;
+  --c-rail-muted: #7f8ea8;
+  --c-rail-hover: #16203a;
+
+  /* Amber is lightened slightly so it keeps its contrast on dark panels. */
+  --c-brand-50: #2a1f07;
+  --c-brand-100: #3d2c08;
+  --c-brand-400: #fbbf24;
+  --c-brand-500: #f7ac16;
+  --c-brand-600: #fbbf24;
+  --c-brand-700: #fcd34d;
+  --c-brand-fg: #1a1204;
+  --c-brand-soft: #3d2c08;
+  --c-brand-soft-fg: #fcd34d;
+
+  /* Status pairs are muted backgrounds with bright text, which reads far
+     better on a dark panel than the light theme's pale fills. */
+  --c-success-bg: #06301f;
+  --c-success-fg: #6ee7b7;
+  --c-warn-bg: #3a2a06;
+  --c-warn-fg: #fcd34d;
+  --c-info-bg: #0e2450;
+  --c-info-fg: #93c5fd;
+  --c-danger-bg: #3f1214;
+  --c-danger-fg: #fca5a5;
+  --c-neutral-bg: #1e2b47;
+  --c-neutral-fg: #cbd5e1;
+  --c-accent-bg: #2a1e4d;
+  --c-accent-fg: #c4b5fd;
+
+  --c-danger: #f87171;
+  --c-success: #34d399;
+
+  /* The fills above are light so they stand out on a dark panel, which means
+     white text on them would be far too low contrast. Dark text is used
+     instead, giving well over the 4.5:1 the guidelines ask for. */
+  --c-danger-on: #3f0d0f;
+  --c-success-on: #05271a;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-raised: 0 4px 16px rgb(0 0 0 / 0.5);
+  --shadow-overlay: 0 24px 60px rgb(0 0 0 / 0.65);
+}
+
+/* ---------------------------------------------------------------------------
+   Map the variables onto Tailwind utilities.
+   "inline" makes each utility reference the variable itself, so switching the
+   theme class repaints without rebuilding any CSS.
+   --------------------------------------------------------------------------- */
+@theme inline {
+  --color-ink-50: var(--c-ink-50);
+  --color-ink-100: var(--c-ink-100);
+  --color-ink-200: var(--c-ink-200);
+  --color-ink-300: var(--c-ink-300);
+  --color-ink-400: var(--c-ink-400);
+  --color-ink-500: var(--c-ink-500);
+  --color-ink-600: var(--c-ink-600);
+  --color-ink-700: var(--c-ink-700);
+  --color-ink-800: var(--c-ink-800);
+  --color-ink-900: var(--c-ink-900);
+
+  --color-canvas: var(--c-canvas);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-line: var(--c-border);
+  --color-line-strong: var(--c-border-strong);
+
+  --color-rail: var(--c-rail);
+  --color-rail-fg: var(--c-rail-fg);
+  --color-rail-muted: var(--c-rail-muted);
+  --color-rail-hover: var(--c-rail-hover);
+
+  --color-brand-50: var(--c-brand-50);
+  --color-brand-100: var(--c-brand-100);
+  --color-brand-400: var(--c-brand-400);
+  --color-brand-500: var(--c-brand-500);
+  --color-brand-600: var(--c-brand-600);
+  --color-brand-700: var(--c-brand-700);
+  --color-brand-fg: var(--c-brand-fg);
+  --color-brand-soft: var(--c-brand-soft);
+  --color-brand-soft-fg: var(--c-brand-soft-fg);
+
+  --color-success-bg: var(--c-success-bg);
+  --color-success-fg: var(--c-success-fg);
+  --color-warn-bg: var(--c-warn-bg);
+  --color-warn-fg: var(--c-warn-fg);
+  --color-info-bg: var(--c-info-bg);
+  --color-info-fg: var(--c-info-fg);
+  --color-danger-bg: var(--c-danger-bg);
+  --color-danger-fg: var(--c-danger-fg);
+  --color-neutral-bg: var(--c-neutral-bg);
+  --color-neutral-fg: var(--c-neutral-fg);
+  --color-accent-bg: var(--c-accent-bg);
+  --color-accent-fg: var(--c-accent-fg);
+
+  --color-danger: var(--c-danger);
+  --color-success: var(--c-success);
+  --color-danger-on: var(--c-danger-on);
+  --color-success-on: var(--c-success-on);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
 html,
 body,
 #root {
   height: 100%;
 }
 
+/* The background is set on the root element as well as the body. The browser
+   propagates the root element's background to the whole page canvas, so the
+   area revealed by overscrolling matches the theme instead of staying white. */
+html {
+  background-color: var(--c-canvas);
+}
+
 body {
-  @apply bg-ink-100 text-ink-800 antialiased;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: var(--c-canvas);
+  color: var(--c-ink-900);
+  font-family: "Inter", "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+
+  /* Eases the change when the theme is switched, rather than snapping. */
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+/* Respect a reader who has asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* A visible focus ring for keyboard users, without adding one for mouse clicks. */
+:focus-visible {
+  outline: 2px solid var(--c-brand-500);
+  outline-offset: 2px;
+}
+
+/* A slimmer scrollbar that follows the theme instead of staying light. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-ink-300) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--c-ink-300);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
 /* ---------------------------------------------------------------------------
    Reusable component classes
-   Defined once here so that buttons, inputs and cards look the same on every
-   page instead of each screen inventing its own spacing and colours.
+   Defined once so buttons, inputs, cards and tables look the same on every
+   screen and pick up both themes without each page repeating the colours.
    --------------------------------------------------------------------------- */
 @layer components {
-  /* The shared button shape is applied to every variant through a grouped
-     selector. Tailwind v4 only lets @apply reference real utilities, not other
-     custom classes, so composing with "@apply btn" inside each variant would
-     fail to build. Grouping the selectors keeps the rules in one place without
-     relying on that. */
+  /* The shared button shape is applied through a grouped selector. Tailwind
+     only lets @apply reference real utilities, not other custom classes, so
+     composing with "@apply btn" inside each variant would fail to build. */
   .btn,
   .btn-primary,
   .btn-secondary,
   .btn-danger,
-  .btn-success {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2
-           text-sm font-medium transition-colors
-           focus:outline-none focus:ring-2 focus:ring-offset-1
-           disabled:cursor-not-allowed disabled:opacity-50;
+  .btn-success,
+  .btn-ghost {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-lg
+           px-4 py-2 text-sm font-medium
+           transition-[background-color,border-color,color,box-shadow,transform] duration-150
+           active:scale-[0.985]
+           disabled:pointer-events-none disabled:opacity-50;
   }
 
   .btn-primary {
-    @apply bg-brand-500 text-white hover:bg-brand-600 focus:ring-brand-400;
+    @apply bg-brand-500 text-brand-fg shadow-sm hover:bg-brand-600;
   }
 
   .btn-secondary {
-    @apply border border-ink-300 bg-white text-ink-700
-           hover:bg-ink-50 focus:ring-ink-300;
+    @apply border border-line-strong bg-surface text-ink-700 hover:bg-ink-100;
   }
 
   .btn-danger {
-    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-400;
+    @apply bg-danger text-danger-on hover:opacity-90;
   }
 
   .btn-success {
-    @apply bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-400;
+    @apply bg-success text-success-on hover:opacity-90;
+  }
+
+  .btn-ghost {
+    @apply text-ink-600 hover:bg-ink-100 hover:text-ink-900;
   }
 
   .btn-sm {
-    @apply px-2.5 py-1.5 text-xs;
+    @apply gap-1.5 px-2.5 py-1.5 text-xs;
   }
 
+  /* Forms */
   .field-label {
-    @apply mb-1 block text-sm font-medium text-ink-700;
+    @apply mb-1.5 block text-sm font-medium text-ink-700;
   }
 
   .field-input {
-    @apply w-full rounded-lg border border-ink-300 bg-white px-3 py-2 text-sm
-           text-ink-900 placeholder-ink-400 transition-colors
-           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200
-           disabled:bg-ink-100;
+    @apply w-full rounded-lg border border-line-strong bg-surface px-3 py-2 text-sm
+           text-ink-900 placeholder-ink-400
+           transition-[border-color,box-shadow] duration-150
+           focus:border-brand-500 focus:outline-none
+           focus:ring-4 focus:ring-brand-500/15
+           disabled:bg-ink-100 disabled:text-ink-500;
   }
 
+  select.field-input {
+    @apply cursor-pointer;
+  }
+
+  /* Panels */
   .card {
-    @apply rounded-xl border border-ink-200 bg-white shadow-sm;
+    @apply rounded-xl border border-line bg-surface;
+    box-shadow: var(--shadow-card);
   }
 
   .card-header {
-    @apply flex items-center justify-between border-b border-ink-200 px-5 py-4;
+    @apply flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4;
   }
 
   .card-title {
     @apply text-base font-semibold text-ink-900;
   }
 
+  /* Tables. Wide tables scroll inside their own container so the page itself
+     never scrolls sideways on a narrow screen. */
   .table-wrap {
-    /* Wide tables scroll inside their own container so the page itself never
-       scrolls sideways on a narrow screen. */
     @apply w-full overflow-x-auto;
   }
 
@@ -121,20 +365,44 @@ body {
   }
 
   .table thead th {
-    @apply whitespace-nowrap border-b border-ink-200 bg-ink-50 px-4 py-3
+    @apply whitespace-nowrap border-b border-line bg-surface-2 px-4 py-3
            text-xs font-semibold uppercase tracking-wide text-ink-500;
   }
 
   .table tbody td {
-    @apply border-b border-ink-100 px-4 py-3 align-middle text-ink-700;
+    @apply border-b border-line px-4 py-3 align-middle text-ink-700;
+  }
+
+  .table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .table tbody tr {
+    @apply transition-colors duration-100;
   }
 
   .table tbody tr:hover {
-    @apply bg-ink-50;
+    @apply bg-ink-100/70;
   }
 
+  /* Labels */
   .badge {
-    @apply inline-flex items-center rounded-full px-2.5 py-0.5
-           text-xs font-medium whitespace-nowrap;
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full
+           px-2.5 py-1 text-xs font-medium;
+  }
+
+  /* Filter pills */
+  .chip {
+    @apply rounded-lg px-3 py-1.5 text-sm transition-colors duration-150
+           bg-ink-100 text-ink-600 hover:bg-ink-200;
+  }
+
+  .chip-active {
+    @apply bg-brand-500 font-medium text-brand-fg hover:bg-brand-600;
+  }
+
+  /* Placeholder blocks shown while a request is in flight. */
+  .skeleton {
+    @apply animate-pulse rounded-md bg-ink-200;
   }
 }

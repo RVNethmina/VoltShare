@@ -25,7 +25,7 @@ import type { Reservation } from '../types'
 /** One label and value row in the detail panel. */
 function DetailRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-wrap justify-between gap-2 border-b border-ink-100 py-3 last:border-0">
+    <div className="flex flex-wrap justify-between gap-2 border-b border-line py-3 last:border-0">
       <span className="text-sm text-ink-500">{label}</span>
       <span className="text-sm font-medium text-ink-900">{children}</span>
     </div>
@@ -214,7 +214,7 @@ export default function ReservationDetailPage() {
                 </button>
               ) : (
                 reservation.status === 'Pending' || reservation.status === 'Approved' ? (
-                  <p className="rounded-lg bg-ink-50 px-3 py-2 text-xs text-ink-500">
+                  <p className="rounded-lg bg-surface-2 px-3 py-2 text-xs text-ink-500">
                     This booking can no longer be changed or cancelled: the service requires
                     at least 12 hours notice before the window starts.
                   </p>
@@ -222,7 +222,7 @@ export default function ReservationDetailPage() {
               )}
 
               {['Completed', 'Cancelled', 'Rejected'].includes(reservation.status) && (
-                <p className="rounded-lg bg-ink-50 px-3 py-2 text-xs text-ink-500">
+                <p className="rounded-lg bg-surface-2 px-3 py-2 text-xs text-ink-500">
                   This booking is closed and no further action is available.
                 </p>
               )}
