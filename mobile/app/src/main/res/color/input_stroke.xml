@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  input_stroke.xml - VoltShare Mobile
+  Border of a text field. The focused state picks up the brand colour, which is
+  what tells the user which field the keyboard is typing into.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/ink_200" android:state_enabled="false" />
+    <item android:color="@color/brand_500" android:state_focused="true" />
+    <item android:color="@color/ink_400" android:state_hovered="true" />
+    <item android:color="@color/line" />
+</selector>

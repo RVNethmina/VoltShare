@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_outlined_stroke.xml - VoltShare Mobile
+  Border of an outlined button.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/ink_200" android:state_enabled="false" />
+    <item android:color="@color/line" />
+</selector>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_success_bg.xml - VoltShare Mobile
+  Fill of a confirming button, such as finalising an energy transfer.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/ink_200" android:state_enabled="false" />
+    <item android:color="@color/success" />
+</selector>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  AndroidManifest.xml - VoltShare Mobile
+
+  Declares the permissions the application needs, the network security policy
+  that allows it to reach the Web API over HTTP on the local network, and the
+  Google Maps key, which is injected from local.properties at build time so it
+  is never committed to version control.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Every screen reads its data from the central Web API. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Needed to centre the map on the prosumer and to find nearby nodes. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Grid operators scan the prosumer's transaction QR code. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- The application still runs without a camera or GPS, for example on an
+         emulator, so neither is declared as required hardware. -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+
+    <application
+        android:name=".VoltShareApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Voltshare"
+        tools:targetApi="31">
+
+        <!-- Substituted by the build from MAPS_API_KEY in local.properties. -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
+        <!-- Splash screen, which decides where to send the user based on the
+             session held in the local SQLite database. -->
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Voltshare">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Prosumer screens. -->
+        <activity
+            android:name=".ui.prosumer.ProsumerHomeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.prosumer.StationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.prosumer.StationMapActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.prosumer.BookingListActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.prosumer.BookingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.prosumer.CreateBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.prosumer.BookingSummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.prosumer.ProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Grid operator screens. -->
+        <activity
+            android:name=".ui.operator.OperatorHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.operator.ScanResultActivity"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

@@ -68,7 +68,11 @@ public class EnergyReservation
     // Signed, opaque token issued when the reservation is approved. The mobile
     // app renders this string as a QR code; the operator scans it and the
     // server verifies the signature. Deliberately carries no personal data.
+    // Omitted from the document entirely while no token has been issued.
+    // Without this the driver would store an explicit null, and several
+    // documents all holding null would collide on the unique index.
     [BsonElement("qrToken")]
+    [BsonIgnoreIfNull]
     public string? QrToken { get; set; }
 
     [BsonElement("qrIssuedAtUtc")]

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_rail_fg.xml - VoltShare Mobile
+  Label of a button sitting on the dark header bar. The header is dark in both
+  themes, so this does not follow the neutral ramp.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#66FFFFFF" android:state_enabled="false" />
+    <item android:color="@color/rail_fg" />
+</selector>

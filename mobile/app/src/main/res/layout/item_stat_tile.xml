@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  item_stat_tile.xml - VoltShare Mobile
+  One headline figure on a dashboard. Included several times per screen so the
+  tiles stay identical instead of each being laid out separately.
+
+  Every figure shown in a tile is calculated by the Web API; the tile only
+  displays the number it was given.
+-->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.VoltShare.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- A small brand coloured plate keeps the tiles from reading as four
+             identical grey rectangles. -->
+        <ImageView
+            android:id="@+id/imageTileIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_icon_circle"
+            android:backgroundTint="@color/brand_soft"
+            android:contentDescription="@null"
+            android:padding="7dp"
+            android:src="@drawable/ic_bolt"
+            app:tint="@color/brand_soft_fg" />
+
+        <TextView
+            android:id="@+id/textTileValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textAppearance="@style/TextMetric"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/textTileLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextEyebrow"
+            tools:text="Awaiting approval" />
+
+        <TextView
+            android:id="@+id/textTileHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/ink_400"
+            android:textSize="11.5sp"
+            tools:text="Bookings needing a decision" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

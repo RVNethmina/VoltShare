@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  colors.xml - VoltShare Mobile
+  The light palette.
+
+  The names below are semantic rather than literal: a layout asks for
+  "surface" or "ink_900", never for "white" or "dark slate". values-night
+  redefines exactly the same names with the dark values, so a screen picks up
+  the correct colour in either mode without a single layout being duplicated.
+  This mirrors the token approach used by the VoltShare web application, so the
+  two clients stay recognisably one product.
+
+  Note the neutral ramp is deliberately semantic and inverts: ink_900 always
+  means "the strongest text colour", which is near black in the light theme and
+  near white in the dark one.
+-->
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Surfaces -->
+    <color name="canvas">#FFF3F5F9</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_2">#FFF8FAFC</color>
+    <color name="line">#FFE2E8F0</color>
+
+    <!-- The header bar. Dark in both themes, so a screen keeps the same
+         identity when the device switches to the dark theme. -->
+    <color name="rail">#FF0B1220</color>
+    <color name="rail_2">#FF17253E</color>
+    <color name="rail_fg">#FFE2E8F0</color>
+    <color name="rail_muted">#FF94A3B8</color>
+
+    <!-- Brand. Amber stands for solar generation, as in the web client. -->
+    <color name="brand_500">#FFF59E0B</color>
+    <color name="brand_600">#FFD97706</color>
+    <color name="brand_700">#FFB45309</color>
+    <color name="brand_100">#FFFEF3C7</color>
+    <!-- Text drawn on top of a brand coloured fill. Amber is a light colour,
+         so this stays dark in both themes rather than following the ramp. -->
+    <color name="brand_fg">#FF3B2703</color>
+    <color name="brand_soft">#FFFEF3C7</color>
+    <color name="brand_soft_fg">#FF92400E</color>
+
+    <!-- Neutral ramp, strongest first -->
+    <color name="ink_900">#FF0F172A</color>
+    <color name="ink_800">#FF1E293B</color>
+    <color name="ink_700">#FF334155</color>
+    <color name="ink_500">#FF64748B</color>
+    <color name="ink_400">#FF94A3B8</color>
+    <color name="ink_200">#FFE2E8F0</color>
+    <color name="ink_100">#FFF1F5F9</color>
+    <color name="ink_50">#FFF8FAFC</color>
+
+    <!-- Reservation status colours, matching the web application -->
+    <color name="status_pending_bg">#FFFEF3C7</color>
+    <color name="status_pending_fg">#FF92400E</color>
+    <color name="status_approved_bg">#FFDBEAFE</color>
+    <color name="status_approved_fg">#FF1E40AF</color>
+    <color name="status_completed_bg">#FFD1FAE5</color>
+    <color name="status_completed_fg">#FF065F46</color>
+    <color name="status_cancelled_bg">#FFE2E8F0</color>
+    <color name="status_cancelled_fg">#FF334155</color>
+    <color name="status_rejected_bg">#FFFEE2E2</color>
+    <color name="status_rejected_fg">#FF991B1B</color>
+
+    <!-- Feedback -->
+    <color name="success">#FF059669</color>
+    <color name="success_bg">#FFD1FAE5</color>
+    <color name="success_fg">#FF065F46</color>
+    <color name="danger">#FFDC2626</color>
+    <color name="danger_bg">#FFFEE2E2</color>
+    <color name="danger_fg">#FF991B1B</color>
+    <color name="info_bg">#FFDBEAFE</color>
+    <color name="info_fg">#FF1E40AF</color>
+</resources>

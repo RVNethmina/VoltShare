@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  bg_auth.xml - VoltShare Mobile
+  Backdrop of the sign in screen. Fixed dark colours rather than the neutral
+  ramp, because the ramp inverts and a "dark" backdrop would turn pale in the
+  dark theme.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="270"
+        android:centerColor="#FF15243E"
+        android:endColor="#FF0B1220"
+        android:startColor="#FF0B1220"
+        android:type="linear" />
+</shape>

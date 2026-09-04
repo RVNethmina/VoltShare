@@ -161,12 +161,73 @@ public class MongoContext
                 new CreateIndexOptions { Name = "ix_reservations_station_status_start" }),
             cancellationToken: cancellationToken);
 
-        // A QR token must identify exactly one reservation. Sparse because the
-        // token only exists once a reservation has been approved.
-        await Reservations.Indexes.CreateOneAsync(
-            new CreateIndexModel<EnergyReservation>(
-                Builders<EnergyReservation>.IndexKeys.Ascending(r => r.QrToken),
-                new CreateIndexOptions { Name = "ux_reservations_qrToken", Unique = true, Sparse = true }),
-            cancellationToken: cancellationToken);
+        await CreateQrTokenIndexAsync(cancellationToken);
+    }
+
+    // Name of the unique index over the reservation QR tokens.
+    private const string QrTokenIndexName = "ux_reservations_qrToken";
+
+    /// <summary>
+    /// Creates the unique index over QR tokens.
+    ///
+    /// This deliberately uses a partial filter rather than a sparse index. A
+    /// sparse index only skips documents where the field is entirely absent,
+    /// so as soon as two unapproved bookings both stored an explicit null
+    /// token they collided and the second insert failed with a duplicate key
+    /// error. A partial filter indexes only documents whose qrToken is a real
+    /// string, which is exactly the set that has to be unique.
+    ///
+    /// If an older index with the same name but different options still
+    /// exists, MongoDB refuses to recreate it, so it is dropped and rebuilt.
+    /// </summary>
+    private async Task CreateQrTokenIndexAsync(CancellationToken cancellationToken)
+    {
+        var model = new CreateIndexModel<EnergyReservation>(
+            Builders<EnergyReservation>.IndexKeys.Ascending(r => r.QrToken),
+            new CreateIndexOptions<EnergyReservation>
+            {
+                Name = QrTokenIndexName,
+                Unique = true,
+                PartialFilterExpression =
+                    new BsonDocument("qrToken", new BsonDocument("$type", "string"))
+            });
+
+        try
+        {
+            await Reservations.Indexes.CreateOneAsync(model, cancellationToken: cancellationToken);
+        }
+        catch (MongoCommandException ex) when (IsIndexConflict(ex))
+        {
+            // An index of this name already exists with different options, so
+            // it is replaced with the corrected definition.
+            await Reservations.Indexes.DropOneAsync(QrTokenIndexName, cancellationToken);
+            await Reservations.Indexes.CreateOneAsync(model, cancellationToken: cancellationToken);
+        }
+    }
+
+    /// <summary>
+    /// Recognises the "an index of this name already exists with different
+    /// options" failure.
+    ///
+    /// Matching on the numeric code alone was not enough: MongoDB reports this
+    /// as IndexOptionsConflict (85) or IndexKeySpecsConflict (86) depending on
+    /// which part of the definition differs, and the deployment reported
+    /// neither in a form the earlier check recognised, so the rebuild was
+    /// silently skipped. The message is therefore checked as well.
+    /// </summary>
+    private static bool IsIndexConflict(MongoCommandException exception)
+    {
+        if (exception.Code is 85 or 86)
+        {
+            return true;
+        }
+
+        if (exception.CodeName is "IndexOptionsConflict" or "IndexKeySpecsConflict")
+        {
+            return true;
+        }
+
+        return exception.Message.Contains("same name as the requested index",
+            StringComparison.OrdinalIgnoreCase);
     }
 }

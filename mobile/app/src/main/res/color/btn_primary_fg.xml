@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_primary_fg.xml - VoltShare Mobile
+  Label of the primary button. Amber is a light fill, so the label stays dark
+  in both themes instead of following the neutral ramp.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/ink_400" android:state_enabled="false" />
+    <item android:color="@color/brand_fg" />
+</selector>

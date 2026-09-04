@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  btn_outlined_fg.xml - VoltShare Mobile
+  Label of an outlined or text button, following the neutral ramp.
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/ink_400" android:state_enabled="false" />
+    <item android:color="@color/ink_900" />
+</selector>
