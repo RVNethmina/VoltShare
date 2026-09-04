@@ -34,6 +34,12 @@
         <item name="colorSurfaceContainer">@color/surface_2</item>
         <item name="colorSurfaceContainerHigh">@color/surface_2</item>
         <item name="colorOutline">@color/line</item>
+
+        <!-- Material washes a raised surface with the primary colour, more
+             strongly the higher it sits. On an amber brand that turns a raised
+             card cream rather than leaving it the surface colour, which is
+             wrong beside the flat cards used everywhere else. -->
+        <item name="elevationOverlayEnabled">false</item>
         <item name="colorOutlineVariant">@color/line</item>
         <item name="android:colorBackground">@color/canvas</item>
         <item name="colorOnBackground">@color/ink_900</item>
