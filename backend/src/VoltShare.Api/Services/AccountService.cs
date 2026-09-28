@@ -6,7 +6,7 @@
 //               unique NIC and email, inactive accounts cannot sign in, mobile
 //               registrations start inactive awaiting back-office activation,
 //               and only a back-office officer may reactivate an account.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

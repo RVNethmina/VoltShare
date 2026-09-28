@@ -5,7 +5,7 @@
 // Description : Conversion from the User storage document to the UserResponse
 //               contract. Kept in one place so that no endpoint can
 //               accidentally return the password hash.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

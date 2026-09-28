@@ -6,7 +6,7 @@
 //               that accompany them. Services throw these instead of returning
 //               status codes, which keeps HTTP concerns out of the business
 //               logic while still producing precise responses.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

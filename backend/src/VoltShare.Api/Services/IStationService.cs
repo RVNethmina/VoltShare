@@ -5,7 +5,7 @@
 // Description : Contract for solar microgrid node business logic, including
 //               the rule that a station holding active reservations may not
 //               be deactivated.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

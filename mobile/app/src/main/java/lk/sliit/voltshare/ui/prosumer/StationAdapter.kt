@@ -4,7 +4,7 @@
 // Description : RecyclerView adapter for the microgrid node list. Displays the
 //               values supplied by the Web API, including the distance it
 //               calculated, and reports taps back to the activity.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -45,6 +45,7 @@ class StationAdapter(
         notifyDataSetChanged()
     }
 
+    /** Inflates one station row for the RecyclerView. */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StationViewHolder {
         val binding = ItemStationBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
@@ -52,10 +53,12 @@ class StationAdapter(
         return StationViewHolder(binding)
     }
 
+    /** Fills a recycled row with the station at this position. */
     override fun onBindViewHolder(holder: StationViewHolder, position: Int) {
         holder.bind(rows[position])
     }
 
+    /** Number of stations currently shown. */
     override fun getItemCount(): Int = rows.size
 
     inner class StationViewHolder(

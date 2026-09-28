@@ -5,7 +5,7 @@
 // Description : MongoDB document for the "users" collection. Stores both web
 //               application staff (Backoffice, GridOperator) and mobile
 //               application solar prosumers in a single collection.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

@@ -5,7 +5,7 @@
 // Description : Strongly typed representation of the "Qr" section of
 //               appsettings.json. Supplies the secret used to sign the
 //               transaction QR tokens carried by prosumers.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

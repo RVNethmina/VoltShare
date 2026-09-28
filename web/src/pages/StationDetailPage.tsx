@@ -5,7 +5,7 @@
 //               Staff add, edit and remove windows here. The API refuses to
 //               delete a window that prosumers have booked, and refuses to cut
 //               its capacity below the places already taken.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -62,6 +62,7 @@ function defaultSlotForm() {
   }
 }
 
+/** One microgrid node with its booking windows, which staff can add, edit or delete. */
 export default function StationDetailPage() {
   const { id = '' } = useParams()
 

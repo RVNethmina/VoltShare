@@ -8,7 +8,7 @@
 //               A scanned code is treated purely as text. Its validity, and
 //               whether the booking it names may still be processed, are
 //               decided entirely by the service.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

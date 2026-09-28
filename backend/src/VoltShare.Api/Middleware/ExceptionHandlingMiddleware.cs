@@ -6,7 +6,7 @@
 //               converts it into a consistent ProblemDetails response. This is
 //               what allows both clients to display the reason a request was
 //               refused without duplicating any business logic themselves.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

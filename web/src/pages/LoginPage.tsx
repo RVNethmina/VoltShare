@@ -5,7 +5,7 @@
 //               The Web API decides whether the credentials are valid and
 //               whether the account is active; this screen only shows the
 //               outcome and routes the user according to the role it returns.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -16,6 +16,7 @@ import { useAuth } from '../context/useAuth'
 import { ApiError } from '../api/client'
 import { Alert } from '../components/Ui'
 
+/** Sign-in screen for back-office officers and grid operators. */
 export default function LoginPage() {
   const { user, login, isRestoring } = useAuth()
   const navigate = useNavigate()

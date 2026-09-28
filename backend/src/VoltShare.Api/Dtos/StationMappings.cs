@@ -5,7 +5,7 @@
 // Description : Conversion between the station and slot storage documents and
 //               their client facing contracts, including translation of the
 //               GeoJSON point into plain latitude and longitude values.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

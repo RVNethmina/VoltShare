@@ -6,7 +6,7 @@
 //               service orders the nodes by distance and reports how far each
 //               one is. Results are cached in SQLite so the screen still shows
 //               the last known nodes when the service cannot be reached.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

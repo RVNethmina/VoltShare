@@ -7,7 +7,7 @@
 //
 //               The nodes and their distances come from the Web API, so this
 //               screen only places the markers it is given.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

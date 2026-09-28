@@ -5,7 +5,7 @@
 // Description : Data access contract for the "users" collection. Contains only
 //               storage operations; every business rule lives in the service
 //               layer, which is what keeps the FAT service pattern intact.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

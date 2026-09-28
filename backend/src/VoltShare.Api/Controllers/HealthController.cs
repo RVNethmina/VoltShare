@@ -5,7 +5,7 @@
 // Description : Diagnostic endpoint used to prove that the service is running
 //               on IIS and that the MongoDB connection is alive. Called during
 //               deployment and demonstrated during the viva.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

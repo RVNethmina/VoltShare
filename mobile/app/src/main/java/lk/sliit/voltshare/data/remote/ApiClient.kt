@@ -5,7 +5,7 @@
 //               attaches the stored access token to each request, and turns a
 //               refused request into an ApiException carrying the service's own
 //               error code and message.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

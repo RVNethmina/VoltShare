@@ -4,7 +4,7 @@
 // Module      : Repositories
 // Description : MongoDB implementation of IUserRepository using the official
 //               MongoDB.Driver package.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

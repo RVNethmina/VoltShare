@@ -4,7 +4,7 @@
 // Module      : Dtos
 // Description : Request and response contracts for energy reservations, the QR
 //               verification exchange and the role based dashboards.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

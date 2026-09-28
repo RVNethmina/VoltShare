@@ -6,7 +6,7 @@
 //               codes, valid coordinates, battery slot availability bounded by
 //               the installed total, and the rule that a station cannot be
 //               deactivated while it still holds active energy reservations.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

@@ -6,7 +6,7 @@
 //
 //               Everything here is either the session or a copy of data owned
 //               by the Web API. No booking is ever created or changed locally.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -336,21 +336,25 @@ class LocalStore(context: Context) {
     // means a change to the column order cannot silently read the wrong field.
     // ---------------------------------------------------------------------
 
+    /** Reads a text column, returning an empty string when it is missing or null. */
     private fun Cursor.getStringOrEmpty(column: String): String {
         val index = getColumnIndex(column)
         return if (index < 0 || isNull(index)) "" else getString(index)
     }
 
+    /** Reads an optional text column, returning null when it is missing or null. */
     private fun Cursor.getStringOrNull(column: String): String? {
         val index = getColumnIndex(column)
         return if (index < 0 || isNull(index)) null else getString(index)
     }
 
+    /** Reads a decimal column, returning the fallback when it is missing or null. */
     private fun Cursor.getDoubleOr(column: String, fallback: Double = 0.0): Double {
         val index = getColumnIndex(column)
         return if (index < 0 || isNull(index)) fallback else getDouble(index)
     }
 
+    /** Reads a whole number column, returning the fallback when it is missing or null. */
     private fun Cursor.getIntOr(column: String, fallback: Int = 0): Int {
         val index = getColumnIndex(column)
         return if (index < 0 || isNull(index)) fallback else getInt(index)

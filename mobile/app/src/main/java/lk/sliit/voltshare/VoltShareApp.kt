@@ -4,7 +4,7 @@
 // Description : Application class. Creates the local database access and the
 //               API client once, when the process starts, and exposes them to
 //               every screen.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

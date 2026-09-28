@@ -5,7 +5,7 @@
 // Description : Back-office administration of web application accounts, that
 //               is Backoffice and GridOperator users. The whole controller is
 //               restricted to back-office officers.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

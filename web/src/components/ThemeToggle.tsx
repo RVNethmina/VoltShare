@@ -3,7 +3,7 @@
 // Project     : VoltShare Web - Smart Solar Microgrid Trading System
 // Description : Three way switch between the light theme, the dark theme and
 //               following the operating system.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

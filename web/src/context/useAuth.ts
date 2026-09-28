@@ -4,7 +4,7 @@
 // Description : Hook for reading the authentication state. Kept in its own file
 //               so the context module exports only components, which keeps the
 //               React fast refresh behaviour reliable during development.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

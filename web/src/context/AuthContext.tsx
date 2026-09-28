@@ -5,7 +5,7 @@
 //               the session on page load. The only rule this client applies is
 //               "is there a valid token"; every permission decision is still
 //               made and enforced by the Web API.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -40,6 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let cancelled = false
 
+    // Asks the API for the current profile when a token is already stored.
     async function restore() {
       if (!getToken()) {
         setIsRestoring(false)

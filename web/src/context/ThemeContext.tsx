@@ -7,7 +7,7 @@
 //               operating system. The choice is remembered per browser, and
 //               while "system" is selected the page keeps following the system
 //               even if it changes while the tab is open.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -52,6 +52,7 @@ function systemPrefersDark(): boolean {
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false
 }
 
+/** Holds the light, dark or system theme choice and applies it to the page. */
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [preference, setPreferenceState] = useState<ThemePreference>(readStoredPreference)
   const [systemIsDark, setSystemIsDark] = useState<boolean>(systemPrefersDark)

@@ -5,7 +5,7 @@
 //               the actions still available on it. Also carries the operator
 //               tool for verifying a scanned prosumer QR code against the
 //               service and finalising the energy transfer.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -32,6 +32,7 @@ function DetailRow({ label, children }: { label: string; children: React.ReactNo
   )
 }
 
+/** Full record of one reservation with approve, reject, cancel, QR verify and complete actions. */
 export default function ReservationDetailPage() {
   const { id = '' } = useParams()
 

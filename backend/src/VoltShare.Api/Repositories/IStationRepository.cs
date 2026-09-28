@@ -4,7 +4,7 @@
 // Module      : Repositories
 // Description : Data access contract for the "solarStationInfo" collection,
 //               including the geospatial search used by the Android map.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

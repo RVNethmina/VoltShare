@@ -5,7 +5,7 @@
 //               the accounts; back-office officers create them, edit them and
 //               control activation. Only a back-office officer can reactivate a
 //               deactivated account, which the service enforces.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -36,6 +36,7 @@ const BLANK_FORM: CreateProsumerPayload = {
   activateImmediately: true,
 }
 
+/** Prosumer management: search, filter, register, activate and deactivate by NIC. */
 export default function ProsumersPage() {
   const { user } = useAuth()
   const isBackoffice = user?.role === 'Backoffice'

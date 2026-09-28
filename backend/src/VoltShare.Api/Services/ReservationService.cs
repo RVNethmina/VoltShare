@@ -8,7 +8,7 @@
 //               overbooked, only active prosumers and stations may trade, and
 //               an approved booking carries a single use QR token that a grid
 //               operator verifies against the server before completing it.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

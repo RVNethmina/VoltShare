@@ -5,7 +5,7 @@
 // Description : Issues signed JSON Web Tokens. The token carries the user
 //               identifier and role, which is what lets the API authorise a
 //               request without going back to the database every time.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

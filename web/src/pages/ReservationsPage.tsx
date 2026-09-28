@@ -6,7 +6,7 @@
 //               prosumer's behalf. The twelve hour notice rule is decided by
 //               the service: this screen only reads the canBeCancelled flag it
 //               returns to decide whether the button is available.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -28,6 +28,7 @@ import type { Reservation, Station } from '../types'
 // Offered as filter buttons, in the order a member of staff usually wants them.
 const STATUS_FILTERS = ['', 'Pending', 'Approved', 'Completed', 'Cancelled', 'Rejected'] as const
 
+/** All reservations with status, station and text filters and quick approve or reject actions. */
 export default function ReservationsPage() {
   const [reservations, setReservations] = useState<Reservation[]>([])
   const [stations, setStations] = useState<Station[]>([])

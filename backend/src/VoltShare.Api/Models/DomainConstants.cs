@@ -6,7 +6,7 @@
 //               system: user roles, authorisation policies, reservation
 //               statuses, reservation types and the business rule thresholds
 //               mandated by the assignment specification.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

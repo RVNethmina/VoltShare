@@ -5,7 +5,7 @@
 //               operators. Every figure shown here is read from the Web API,
 //               which computes the counts; nothing on this page is calculated
 //               in the browser or hard coded.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -52,6 +52,7 @@ function StatTile({
   )
 }
 
+/** Operational overview: reservation counts and today's schedule. */
 export default function DashboardPage() {
   const { user } = useAuth()
   const [data, setData] = useState<OperatorDashboard | null>(null)

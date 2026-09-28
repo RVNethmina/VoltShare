@@ -7,7 +7,7 @@
 //               only secret, so a QR code cannot be forged or altered by a
 //               prosumer, and the operator's scan is checked against the
 //               server rather than trusted on its own.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

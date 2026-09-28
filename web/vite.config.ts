@@ -2,7 +2,7 @@
 // File        : vite.config.ts
 // Project     : VoltShare Web - Smart Solar Microgrid Trading System
 // Description : Build configuration for the React back-office application.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

@@ -4,7 +4,7 @@
 // Description : One typed function per Web API endpoint the back-office uses.
 //               These are thin wrappers on purpose: no decisions are made here,
 //               they only describe which endpoint a screen is calling.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

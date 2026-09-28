@@ -6,7 +6,7 @@
 //               inactive and cannot sign in until a back-office officer
 //               approves them here. Outstanding account closure requests are
 //               shown alongside, because only this role may act on them.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -16,6 +16,7 @@ import { ApiError } from '../api/client'
 import { Alert, EmptyState, Loading, PageHeader, formatDateTime } from '../components/Ui'
 import type { User } from '../types'
 
+/** Lists new mobile registrations awaiting activation and account closure requests. */
 export default function PendingActivationsPage() {
   const [pending, setPending] = useState<User[]>([])
   const [closureRequests, setClosureRequests] = useState<User[]>([])

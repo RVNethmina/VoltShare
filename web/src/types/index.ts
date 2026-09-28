@@ -4,7 +4,7 @@
 // Description : TypeScript mirrors of the contracts returned by the Web API.
 //               Keeping them in one file means a change to the API surfaces as
 //               a compile error here rather than as a runtime surprise.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

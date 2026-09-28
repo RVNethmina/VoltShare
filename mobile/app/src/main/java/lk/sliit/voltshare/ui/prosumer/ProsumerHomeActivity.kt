@@ -4,7 +4,7 @@
 // Description : Prosumer home screen. Shows the booking counts and the next
 //               upcoming reservation, every one of which is computed by the
 //               Web API and simply displayed here.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

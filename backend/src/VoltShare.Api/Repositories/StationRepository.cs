@@ -4,7 +4,7 @@
 // Module      : Repositories
 // Description : MongoDB implementation of IStationRepository, including the
 //               $geoNear aggregation that powers the nearby stations map.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

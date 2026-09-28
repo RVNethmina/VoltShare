@@ -6,7 +6,7 @@
 //               MongoDB context, repositories, services, JWT authentication,
 //               role based authorisation policies, CORS and Swagger, then wires
 //               the HTTP request pipeline in the correct order.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

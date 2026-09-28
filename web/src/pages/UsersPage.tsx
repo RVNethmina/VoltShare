@@ -5,7 +5,7 @@
 //               Backoffice and Grid Operator. The whole page is restricted to
 //               back-office officers, and the service refuses these calls from
 //               any other role regardless of what the browser allows.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -35,6 +35,7 @@ const BLANK_FORM: CreateStaffUserPayload = {
   password: '',
 }
 
+/** Back-office management of staff accounts (back-office officers and grid operators). */
 export default function UsersPage() {
   const { user: currentUser } = useAuth()
 

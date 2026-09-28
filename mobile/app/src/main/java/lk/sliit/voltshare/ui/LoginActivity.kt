@@ -5,7 +5,7 @@
 //               whether the account is active, and reports the role. This
 //               screen stores the resulting session in SQLite and routes the
 //               user to the home screen for that role.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

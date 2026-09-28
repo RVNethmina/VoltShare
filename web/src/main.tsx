@@ -3,7 +3,7 @@
 // Project     : VoltShare Web - Smart Solar Microgrid Trading System
 // Description : Browser entry point. Mounts the React tree and installs the
 //               router and the authentication provider around it.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

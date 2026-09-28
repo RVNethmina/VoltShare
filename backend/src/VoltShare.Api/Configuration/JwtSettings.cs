@@ -5,7 +5,7 @@
 // Description : Strongly typed representation of the "Jwt" section of
 //               appsettings.json, describing how access tokens are signed
 //               and validated.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

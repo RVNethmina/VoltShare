@@ -4,7 +4,7 @@
 // Description : Small presentational building blocks shared by every screen:
 //               status badges, page headers, empty and loading states, alerts
 //               and a modal dialog.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -155,6 +155,7 @@ export function Modal({
   useEffect(() => {
     if (!isOpen) return
 
+    // Closes the dialog when Escape is pressed.
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') onClose()
     }

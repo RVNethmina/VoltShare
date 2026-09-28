@@ -4,7 +4,7 @@
 // Module      : Security
 // Description : Contract for issuing JSON Web Tokens to authenticated users of
 //               the web application and the Android application.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

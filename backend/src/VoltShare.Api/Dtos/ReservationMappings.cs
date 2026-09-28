@@ -5,7 +5,7 @@
 // Description : Conversion from the reservation storage document to the client
 //               contract, including the server side evaluation of whether the
 //               booking may still be changed under the twelve hour rule.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

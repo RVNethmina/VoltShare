@@ -6,7 +6,7 @@
 //               operators update battery availability. When the API refuses an
 //               action, such as deactivating a node that still has bookings,
 //               its own explanation is shown unchanged.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -35,6 +35,7 @@ const BLANK_FORM: StationPayload & { code: string } = {
   closeTime: '20:00',
 }
 
+/** Microgrid node management: register, edit, activate, deactivate and update battery slots. */
 export default function StationsPage() {
   const { user } = useAuth()
   const isBackoffice = user?.role === 'Backoffice'

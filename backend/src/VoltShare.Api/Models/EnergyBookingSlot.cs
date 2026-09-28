@@ -5,7 +5,7 @@
 // Description : MongoDB document for the "energyBookingSlots" collection. Each
 //               document is one bookable time window at one solar station,
 //               together with how many prosumers may book it.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

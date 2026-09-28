@@ -7,7 +7,7 @@
 //               The request is only a flag: the specification requires that
 //               deactivation and reactivation are carried out by a back-office
 //               officer, so this screen never deactivates anything itself.
-// Author      : <IT Number - Member Name>
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

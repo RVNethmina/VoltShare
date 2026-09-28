@@ -8,7 +8,7 @@
 //               The colours are looked up by name, and the names are redefined
 //               in values-night, so a badge restyles itself for the dark theme
 //               without this file knowing which theme is running.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

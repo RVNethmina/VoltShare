@@ -4,7 +4,7 @@
 // Description : RecyclerView adapter for the bookable window picker. Marks the
 //               chosen window and refuses selection of a full one, using the
 //               remaining capacity the Web API reported.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -51,6 +51,7 @@ class SlotAdapter(
         notifyDataSetChanged()
     }
 
+    /** Inflates one booking window row for the RecyclerView. */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlotViewHolder {
         val binding = ItemSlotBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
@@ -58,10 +59,12 @@ class SlotAdapter(
         return SlotViewHolder(binding)
     }
 
+    /** Fills a recycled row with the window at this position. */
     override fun onBindViewHolder(holder: SlotViewHolder, position: Int) {
         holder.bind(slots[position])
     }
 
+    /** Number of booking windows currently shown. */
     override fun getItemCount(): Int = slots.size
 
     inner class SlotViewHolder(

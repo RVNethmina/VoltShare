@@ -4,7 +4,7 @@
 // Description : Kotlin mirrors of the request and response contracts of the
 //               VoltShare Web API. Gson maps these by property name, so the
 //               names must match the JSON the service returns exactly.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

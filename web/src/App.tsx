@@ -5,7 +5,7 @@
 //               wrapped in the guard, and the back-office only sections declare
 //               the roles allowed to reach them. The guard is a navigation
 //               convenience: the Web API enforces the same restrictions itself.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -22,6 +22,7 @@ import ProsumersPage from './pages/ProsumersPage'
 import PendingActivationsPage from './pages/PendingActivationsPage'
 import UsersPage from './pages/UsersPage'
 
+/** Route table: the sign-in page, then every screen behind the signed in layout. */
 export default function App() {
   return (
     <Routes>

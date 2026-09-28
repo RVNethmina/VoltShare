@@ -5,7 +5,7 @@
 // Description : A station carrying the distance calculated by the MongoDB
 //               $geoNear aggregation stage. Used only as the result shape of
 //               the nearby stations query.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

@@ -6,7 +6,7 @@
 //               and restricts the results to the signed in prosumer whatever
 //               this screen asks for. Results are cached in SQLite so the
 //               history is still readable without a connection.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

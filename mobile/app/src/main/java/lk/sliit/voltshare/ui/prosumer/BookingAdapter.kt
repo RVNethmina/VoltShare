@@ -4,7 +4,7 @@
 // Description : RecyclerView adapter for the booking list. Shows the values the
 //               Web API returned, including the status, and reports taps back
 //               to the activity.
-// Author      : <IT Number - Member Name>
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -33,6 +33,7 @@ class BookingAdapter(
         notifyDataSetChanged()
     }
 
+    /** Inflates one booking row for the RecyclerView. */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingViewHolder {
         val binding = ItemBookingBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
@@ -40,10 +41,12 @@ class BookingAdapter(
         return BookingViewHolder(binding)
     }
 
+    /** Fills a recycled row with the booking at this position. */
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int) {
         holder.bind(bookings[position])
     }
 
+    /** Number of bookings currently shown. */
     override fun getItemCount(): Int = bookings.size
 
     inner class BookingViewHolder(

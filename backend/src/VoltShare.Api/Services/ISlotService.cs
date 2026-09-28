@@ -5,7 +5,7 @@
 // Description : Contract for energy booking slot business logic: creating the
 //               windows a station offers, and protecting windows that
 //               prosumers have already booked.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

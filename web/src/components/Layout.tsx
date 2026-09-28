@@ -8,7 +8,7 @@
 //               The rail is permanent from the large breakpoint upwards and
 //               becomes a slide over drawer below it, so the same markup works
 //               from a phone to a desktop.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
@@ -38,6 +38,7 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/users', label: 'System Users', icon: '⚙', roles: ['Backoffice'] },
 ]
 
+/** Application shell: sidebar navigation filtered by role, top bar and page outlet. */
 export default function Layout() {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
@@ -62,6 +63,7 @@ export default function Layout() {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [isDrawerOpen])
 
+  // Clears the session and returns to the sign-in page.
   function handleLogout() {
     logout()
     navigate('/login', { replace: true })

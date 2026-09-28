@@ -4,7 +4,7 @@
 // Module      : Dtos
 // Description : Request and response contracts for the energy booking slots
 //               offered by a station.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

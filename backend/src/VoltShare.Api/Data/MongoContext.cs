@@ -5,7 +5,7 @@
 // Description : Single entry point to the MongoDB database. Exposes the four
 //               collections required by the specification and creates the
 //               indexes that the business rules and queries depend on.
-// Author      : <IT Number - Member Name>
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

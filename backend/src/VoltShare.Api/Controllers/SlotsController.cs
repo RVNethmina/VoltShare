@@ -5,7 +5,7 @@
 // Description : Endpoints that address a single energy booking window directly.
 //               Creation and listing by station live on StationsController,
 //               because a window only exists in the context of its station.
-// Author      : <IT Number - Member Name>
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
