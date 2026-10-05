@@ -5,7 +5,7 @@
 //               operators. Every figure shown here is read from the Web API,
 //               which computes the counts; nothing on this page is calculated
 //               in the browser or hard coded.
-// Author      : IT22140852 - Appuhami M.N.H.
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

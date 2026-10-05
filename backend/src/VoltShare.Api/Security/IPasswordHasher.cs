@@ -5,7 +5,7 @@
 // Description : Contract for hashing and verifying account passwords. Declared
 //               as an interface so the hashing algorithm can be replaced
 //               without touching any service that depends on it.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

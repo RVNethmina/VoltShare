@@ -4,7 +4,7 @@
 // Description : RecyclerView adapter for the bookable window picker. Marks the
 //               chosen window and refuses selection of a full one, using the
 //               remaining capacity the Web API reported.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

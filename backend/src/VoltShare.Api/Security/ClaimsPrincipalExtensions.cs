@@ -5,7 +5,7 @@
 // Description : Helper methods for reading the identity and role of the caller
 //               out of the validated JWT, so controllers do not repeat claim
 //               lookup code and ownership checks stay consistent.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

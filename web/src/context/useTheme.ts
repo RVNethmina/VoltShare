@@ -4,7 +4,7 @@
 // Description : Hook for reading and changing the theme. Kept separate from the
 //               provider so that module exports only components, which keeps
 //               React fast refresh reliable during development.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

@@ -8,7 +8,7 @@
 //               The rail is permanent from the large breakpoint upwards and
 //               becomes a slide over drawer below it, so the same markup works
 //               from a phone to a desktop.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

@@ -7,7 +7,7 @@
 //               operating system. The choice is remembered per browser, and
 //               while "system" is selected the page keeps following the system
 //               even if it changes while the tab is open.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

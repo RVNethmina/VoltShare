@@ -4,7 +4,7 @@
 // Description : Small presentational building blocks shared by every screen:
 //               status badges, page headers, empty and loading states, alerts
 //               and a modal dialog.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

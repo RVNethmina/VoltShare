@@ -4,7 +4,7 @@
 // Description : Entry point of the application. Reads the session held in the
 //               local SQLite database and sends the user straight to the home
 //               screen for their role, or to sign in when there is no session.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

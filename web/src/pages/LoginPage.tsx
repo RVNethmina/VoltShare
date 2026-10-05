@@ -5,7 +5,7 @@
 //               The Web API decides whether the credentials are valid and
 //               whether the account is active; this screen only shows the
 //               outcome and routes the user according to the role it returns.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

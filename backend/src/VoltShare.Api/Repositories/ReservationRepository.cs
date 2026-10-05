@@ -5,7 +5,7 @@
 // Description : MongoDB implementation of IReservationRepository. The status
 //               transitions are written as guarded atomic updates so that two
 //               simultaneous requests cannot both act on the same booking.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

@@ -5,7 +5,7 @@
 // Description : Creates the very first Backoffice account when the users
 //               collection contains none. Without this there would be no way
 //               to sign in to the web application on a fresh database.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

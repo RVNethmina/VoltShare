@@ -5,7 +5,7 @@
 // Description : Data access contract for the "energyBookingSlots" collection,
 //               including the atomic capacity operations that make concurrent
 //               booking of the last free place safe.
-// Author      : IT22230942 - Madurapperuma H.A.S.I
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

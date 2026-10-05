@@ -5,7 +5,7 @@
 //               keeps a signed in user away from screens their role does not
 //               cover. This is a navigation convenience only: the Web API
 //               refuses the same requests regardless of what the browser shows.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

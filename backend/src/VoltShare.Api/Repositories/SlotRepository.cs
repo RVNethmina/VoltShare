@@ -5,7 +5,7 @@
 // Description : MongoDB implementation of ISlotRepository. The capacity
 //               operations use a single atomic FindOneAndUpdate so that two
 //               prosumers cannot both take the last free place on a slot.
-// Author      : IT22230942 - Madurapperuma H.A.S.I
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

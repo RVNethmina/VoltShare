@@ -5,7 +5,7 @@
 // Description : BCrypt implementation of IPasswordHasher. BCrypt is used
 //               because it salts every hash automatically and is deliberately
 //               slow, which makes stolen hashes expensive to attack.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

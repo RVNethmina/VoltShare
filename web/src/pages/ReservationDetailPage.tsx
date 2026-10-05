@@ -5,7 +5,7 @@
 //               the actions still available on it. Also carries the operator
 //               tool for verifying a scanned prosumer QR code against the
 //               service and finalising the energy transfer.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

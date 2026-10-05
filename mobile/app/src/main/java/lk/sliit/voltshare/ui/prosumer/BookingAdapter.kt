@@ -4,7 +4,7 @@
 // Description : RecyclerView adapter for the booking list. Shows the values the
 //               Web API returned, including the status, and reports taps back
 //               to the activity.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

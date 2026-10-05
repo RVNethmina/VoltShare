@@ -5,7 +5,7 @@
 // Description : Energy reservation endpoints covering the whole booking
 //               lifecycle: request, change, cancel, approve, reject, the QR
 //               payload for the prosumer, and the operator scan and completion.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

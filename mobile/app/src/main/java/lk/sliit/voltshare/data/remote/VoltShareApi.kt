@@ -4,7 +4,7 @@
 // Description : Retrofit description of every VoltShare Web API endpoint this
 //               application uses. Declarations only: no rule is applied here,
 //               because all business logic lives in the central service.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

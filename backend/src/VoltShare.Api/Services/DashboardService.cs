@@ -6,7 +6,7 @@
 //               grid operator dashboard. Every figure is calculated here from
 //               live data, so neither client aggregates anything itself and no
 //               value is ever hard coded in a screen.
-// Author      : IT22140852 - Appuhami M.N.H.
+// Author      : IT22230942 - Madurapperuma H.A.S.I
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

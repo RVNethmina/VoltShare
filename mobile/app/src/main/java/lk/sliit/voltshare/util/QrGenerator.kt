@@ -8,7 +8,7 @@
 //               signed by the service, and checked by the service again when a
 //               grid operator scans it, so nothing about its validity is
 //               decided on the device.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

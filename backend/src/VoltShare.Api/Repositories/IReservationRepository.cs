@@ -5,7 +5,7 @@
 // Description : Data access contract for the "energyReservations" collection,
 //               covering booking storage, the filtered searches behind the
 //               booking views, and the counts behind the dashboards.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

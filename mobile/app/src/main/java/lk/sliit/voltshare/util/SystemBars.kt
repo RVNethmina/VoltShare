@@ -7,7 +7,7 @@
 //               header laid out at the top of the screen ends up underneath the
 //               clock unless the inset is applied as padding. This helper does
 //               that in one place rather than every layout guessing a height.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

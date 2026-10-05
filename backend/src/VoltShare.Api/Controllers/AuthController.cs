@@ -5,7 +5,7 @@
 // Description : Authentication endpoints shared by the React web application
 //               and the Android application: login, prosumer self service
 //               registration and retrieval of the signed in profile.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

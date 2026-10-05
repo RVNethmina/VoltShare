@@ -5,7 +5,7 @@
 // Description : Strongly typed representation of the "MongoDb" section of
 //               appsettings.json. Bound once at start-up and injected wherever
 //               the database connection details are required.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

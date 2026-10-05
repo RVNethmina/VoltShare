@@ -4,7 +4,7 @@
 // Module      : Security
 // Description : Contract for issuing and verifying the transaction QR tokens
 //               that a prosumer presents and a grid operator scans.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

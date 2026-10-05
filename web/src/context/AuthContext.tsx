@@ -5,7 +5,7 @@
 //               the session on page load. The only rule this client applies is
 //               "is there a valid token"; every permission decision is still
 //               made and enforced by the Web API.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22140852 - Appuhami M.N.H.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

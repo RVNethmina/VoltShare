@@ -5,7 +5,7 @@
 // Description : Contract for the energy reservation business logic: the seven
 //               day booking horizon, the twelve hour change notice, slot
 //               capacity, the approval workflow and QR verification.
-// Author      : IT22129376 - Wijesinghe W.A.C.S.
+// Author      : IT22253958 - Nethmina W.P.R.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 

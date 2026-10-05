@@ -17,38 +17,42 @@ A client–server system that lets solar prosumers trade energy with local micro
 
 ## Team and individual contributions
 
+Each member owns one complete feature across the Web API, the web application and the Android application. The four shares are about the same size (about 4,200 lines of source each).
+
 | IT Number | Name | Area of responsibility |
 |---|---|---|
-| IT22253958 | Nethmina W.P.R. | Platform, authentication, security and deployment |
-| IT22140852 | Appuhami M.N.H. | User and prosumer account management, dashboards |
-| IT22230942 | Madurapperuma H.A.S.I | Microgrid nodes, booking windows, maps and operator mode |
-| IT22129376 | Wijesinghe W.A.C.S. | Energy reservations, business rules and transaction QR codes |
+| IT22253958 | Nethmina W.P.R. | Energy reservation engine, business rules, concurrency control and the transaction QR flow |
+| IT22140852 | Appuhami M.N.H. | Authentication, security, account management and local user storage |
+| IT22230942 | Madurapperuma H.A.S.I | Microgrid nodes, booking windows, Google Maps and dashboards |
+| IT22129376 | Wijesinghe W.A.C.S. | Platform architecture, error handling, IIS deployment and the shared client foundation |
 
 ### IT22253958 – Nethmina W.P.R.
-- **Web Service:** project architecture, `Program.cs`, configuration, MongoDB context, indexes and seed data
-- **Web Service:** authentication (login, JWT issue and validation), BCrypt password hashing, role policies, global exception handling middleware, health check
-- **Web Service:** IIS deployment of the API and the web site (deployment scripts, CORS, SPA rewrite)
-- **Web App:** application shell, routing, API client, auth and theme contexts, shared UI components, sign-in page
-- **Mobile App:** application setup, Retrofit API layer, SQLite database helper and local store, sign-in and splash screens, light and dark theme
+- **Web Service:** the reservation engine. It covers the complete lifecycle (create, modify, cancel, approve, reject, complete) and every reservation business rule: the 7-day booking window, 12-hour notice for changes and cancellations, inactive prosumer, node and window checks, and duplicate booking prevention
+- **Web Service:** concurrency control. A single conditional MongoDB update claims or releases a place in a booking window, so a window can never be overbooked
+- **Web Service:** transaction QR. Tokens are HMAC-SHA256 signed and single-use: issued on approval, verified by the server, then used to finalise the energy transfer
+- **Web App:** reservations list with filters, and the reservation decision screen (approve, reject, QR verification, completion)
+- **Mobile App:** create booking, booking detail with the transaction QR code, and operator mode (QR scanning, server verification, finalising the transfer)
 
 ### IT22140852 – Appuhami M.N.H.
-- **Web Service:** user management (staff accounts) and prosumer management with NIC as the primary key
-- **Web Service:** prosumer registration, activation, deactivation and closure-request rules; dashboard service and endpoints
-- **Web App:** dashboard, system users, prosumers and pending activations pages
-- **Mobile App:** prosumer registration, profile update, account closure request, prosumer dashboard
+- **Web Service:** authentication and security: JWT issue and validation, role claims, BCrypt password hashing
+- **Web Service:** staff user management, and prosumer management with NIC as the primary key, including the registration, activation, deactivation and closure-request rules
+- **Web App:** sign-in page, session context and protected routes, plus the system users, prosumers and pending activations pages
+- **Mobile App:** splash, sign-in and registration screens, profile update and account closure request
+- **Mobile App:** SQLite local database for local user management and caching, and the authenticated Retrofit client, which attaches the access token and maps API errors
 
 ### IT22230942 – Madurapperuma H.A.S.I
-- **Web Service:** microgrid node management (GPS location, capacity, battery slots, schedules, activation) and the deactivation-blocking rule
-- **Web Service:** booking window (slot) management and the nearby-nodes geo query (2dsphere)
-- **Web App:** microgrid nodes page and node detail page with booking windows
-- **Mobile App:** nearby nodes list, Google Maps integration and device location
-- **Mobile App:** operator mode: QR scanning, token verification and finalising the energy transfer
+- **Web Service:** microgrid node management (GPS location, capacity, battery slots, schedules, activation), and the rule that blocks deactivating a node with active reservations
+- **Web Service:** booking window (slot) management and the nearby-nodes geospatial query (2dsphere)
+- **Web Service:** dashboard statistics for prosumers and operators
+- **Web App:** dashboard, the microgrid nodes page, and the node detail page with its booking windows
+- **Mobile App:** prosumer dashboard, nearby nodes list, Google Maps with device location, the booking window picker, and booking history with search and filters
 
 ### IT22129376 – Wijesinghe W.A.C.S.
-- **Web Service:** energy reservation management: create, modify, cancel, approve, reject and complete
-- **Web Service:** 7-day and 12-hour rules, atomic no-overbooking, HMAC-signed single-use QR tokens
-- **Web App:** reservations list with filters and the reservation detail page
-- **Mobile App:** create booking, booking summary, booking history with search and filters, booking detail and transaction QR code
+- **Web Service:** platform architecture: application start-up, dependency injection, authorisation policies, CORS and Swagger (`Program.cs`), plus the MongoDB context, indexes and seed data
+- **Web Service:** the global exception handling middleware, and the error-code model every endpoint shares
+- **Deployment:** hosting the Web API and the web application on Windows IIS (deployment scripts, SPA rewrite)
+- **Web App:** application foundation: routing, layout and navigation, the API client and resource functions, shared UI components, and the light and dark theme
+- **Mobile App:** application setup, the Retrofit API interface and models, the light and dark theme, shared formatters and status styles, and the booking summary screen
 
 Each source file names its author in its header block.
 

@@ -5,7 +5,7 @@
 //               wrapped in the guard, and the back-office only sections declare
 //               the roles allowed to reach them. The guard is a navigation
 //               convenience: the Web API enforces the same restrictions itself.
-// Author      : IT22253958 - Nethmina W.P.R.
+// Author      : IT22129376 - Wijesinghe W.A.C.S.
 // Created     : 2026-09-03
 // -----------------------------------------------------------------------------
 
