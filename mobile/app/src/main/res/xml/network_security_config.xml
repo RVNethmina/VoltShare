@@ -20,7 +20,7 @@
 
         <!-- The development machine's address on the local network, used when
              the application runs on a physical handset. -->
-        <domain includeSubdomains="false">192.168.1.190</domain>
+        <domain includeSubdomains="false">192.168.1.100</domain>
 
         <!-- Loopback, for a service reached through a port forward. -->
         <domain includeSubdomains="false">localhost</domain>
